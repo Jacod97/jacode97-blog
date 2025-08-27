@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write  
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout
@@ -19,7 +21,7 @@ jobs:
         with:
           node-version: 21
 
-      - name: Check node_modules cache
+      - name: Check node-modules
         uses: actions/cache@v3
         id: node-modules-cache
         with:
