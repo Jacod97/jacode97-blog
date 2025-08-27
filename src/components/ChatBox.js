@@ -2,13 +2,14 @@ import { useState } from 'react';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([
-    { from: "bot", text: "안녕하세요! 무엇을 도와드릴까요?" }
+    { id: 1, from: "bot", text: "안녕하세요! 무엇을 도와드릴까요?" }
   ]);
   const [input, setInput] = useState("");
 
   const sendMessage = () => {
     if (!input) return;
-    setMessages([...messages, { from: "user", text: input }]);
+    const newMsg = { id: Date.now(), from: "user", text: input };
+    setMessages([...messages, newMsg]);
     setInput("");
   };
 
@@ -23,8 +24,8 @@ export default function ChatBox() {
         borderRadius: "8px",
         background: "#fff"
       }}>
-        {messages.map((msg, i) => (
-          <div key={i} style={{
+        {messages.map((msg) => (
+          <div key={msg.id} style={{
             textAlign: msg.from === "user" ? "right" : "left",
             margin: "0.3rem 0"
           }}>
@@ -49,6 +50,7 @@ export default function ChatBox() {
           placeholder="메시지를 입력하세요..."
         />
         <button
+          type="button"
           onClick={sendMessage}
           style={{ marginLeft: "0.5rem", padding: "0.5rem 1rem", borderRadius: "5px", background: "#007bff", color: "white" }}
         >

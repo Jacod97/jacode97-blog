@@ -17,6 +17,7 @@ export default function TabSection() {
       <div style={{ display: "flex", marginBottom: "1rem" }}>
         {tabs.map(tab => (
           <button
+            type="button"
             key={tab}
             onClick={() => setActive(tab)}
             style={{
