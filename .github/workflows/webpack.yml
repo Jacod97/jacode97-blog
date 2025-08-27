@@ -13,25 +13,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 21
 
       - name: Install dependencies
-        run: npm install
+        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Build project
         run: npm run build
 
-      - name: Move build to docs
-        run: |
-          rm -rf docs
-          mv build docs
-
-      - name: Deploy to GitHub Pages (main/docs)
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
           publish_dir: ./docs
+          publish_branch: gh-pages
