@@ -1,33 +1,31 @@
-name: NodeJS with Webpack
+name: NodeJS with webpack
 
 on:
   push:
-    branches:
-      - main   # main 브랜치에 push될 때 실행
+    branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: 21
 
       - name: Install dependencies
-        if : steps.node-modules-cache.outputs.cache-hit != 'true'
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build project
+      - name: Build React
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to "gh-pages" branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          publish_branch: gh-pages
