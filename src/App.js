@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Wellcome in Jacode-Blog
+          Wellcome to Jacode-Blog
         </p>
         <a
           className="App-link"
