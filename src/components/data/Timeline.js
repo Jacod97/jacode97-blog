@@ -1,44 +1,51 @@
 import React from "react";
 
-const timelineData = {
-  education: [
-    {
-      year: "Mar 2012 – Feb 2015",
-      title: "Nam-il High School (Busan, South Korea)",
-      description: "Graduated from general high school"
-    },
-    {
-      year: "Mar 2015 – Aug 2022",
-      title: "Dong-A University (Busan, South Korea)",
-      description: "B.S. in Civil Engineering (Construction Systems Engineering)"
-    },
-    {
-      year: "Dec 2024 – Jun 2025",
-      title: "Wanted Lab (Seoul, South Korea)",
-      description: `"PotenUP Data AI Developer Training Program" Completed`
-    }
-  ],
-  professional: [
-    {
-      year: "Sep 2023 – Oct 2024",
-      title: "Civil Engineer, Sambo Engineering & Construction (Seoul, South Korea)",
-      description:
-        "Worked in the Highway & Road Division, leading highway and road design projects. Collaborated with multiple companies and contributed to project management tasks."
-    },
-    {
-      year: "May 2025 – Jul 2025",
-      title: "R&D Intern, WisePlus (Seoul, South Korea)",
-      description:
-        "Conducted data quality management for flood risk maps using Python, QGIS, and PostgreSQL. Performed flood scenario analysis with SWMM."
-    },
-    {
-      year: "Sep 2025 – Present",
-      title: "AI Engineer, SLZ Inc. (Seoul, South Korea)",
-      description:
-        "Developing projects that integrate Digital Twin and AI technologies across diverse applications."
-    }
-  ]
-};
+const timelineData = [
+  {
+    year: "Mar 2012 – Feb 2015",
+    type: "education",
+    title: "Nam-il High School (Busan, South Korea)",
+    description: ["Graduated from general high school"]
+  },
+  {
+    year: "Mar 2015 – Aug 2022",
+    type: "education",
+    title: "Dong-A University (Busan, South Korea)",
+    description: ["B.S. in Civil Engineering (Construction Systems Engineering)"]
+  },
+  {
+    year: "Sep 2023 – Oct 2024",
+    type: "professional",
+    title: "Civil Engineer, Sambo Engineering & Construction (Seoul, South Korea)",
+    description: [
+      "Worked in the Highway & Road Division, conducting highway and road design projects.",
+      "Collaborated with various companies on project management."
+    ]
+  },
+  {
+    year: "May 2025 – Jul 2025",
+    type: "professional",
+    title: "R&D Intern, WisePlus (Seoul, South Korea)",
+    description: [
+      "Conducted data quality management for flood risk maps using Python, QGIS, and PostgreSQL.",
+      "Performed flood scenario analysis with SWMM."
+    ]
+  },
+  {
+    year: "Sep 2025 – Present",
+    type: "professional",
+    title: "AI Engineer, SLZ Inc. (Seoul, South Korea)",
+    description: [
+      "Developing projects that integrate Digital Twin and AI technologies."
+    ]
+  },
+  {
+    year: "Dec 2024 – Jun 2025",
+    type: "education",
+    title: "Wanted Lab (Seoul, South Korea)",
+    description: ["\"PotenUP Data AI Developer Training Program\" Completed"]
+  }
+];
 
 export default function Timeline({ onClose }) {
   return (
@@ -112,16 +119,15 @@ export default function Timeline({ onClose }) {
             }}
           />
 
-          {/* Education */}
-          {timelineData.education.map((item) => (
+          {timelineData.map((item) => (
             <div
               key={`${item.title}-${item.year}`}
               style={{
                 position: "relative",
                 width: "50%",
                 padding: "1rem",
-                textAlign: "right",
-                left: 0
+                textAlign: item.type === "education" ? "right" : "left",
+                left: item.type === "education" ? 0 : "50%"
               }}
             >
               {/* Dot */}
@@ -129,67 +135,40 @@ export default function Timeline({ onClose }) {
                 style={{
                   position: "absolute",
                   top: "20px",
-                  right: "-10px",
+                  [item.type === "education" ? "right" : "left"]: "-10px",
                   width: "20px",
                   height: "20px",
-                  background: "#0077b6",
+                  background: item.type === "education" ? "#0077b6" : "#ff6b6b",
                   borderRadius: "50%",
                   border: "3px solid white",
-                  boxShadow: "0 0 0 2px #0077b6"
+                  boxShadow: `0 0 0 2px ${item.type === "education" ? "#0077b6" : "#ff6b6b"}`
                 }}
               />
+              {/* Content */}
               <div
                 style={{
-                  background: "#f9fcff",
+                  background: item.type === "education" ? "#f9fcff" : "#fff8f8",
                   padding: "1rem",
                   borderRadius: "8px",
                   boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
                 }}
               >
                 <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
-                <h4 style={{ margin: "0 0 0.5rem", color: "#0077b6" }}>{item.year}</h4>
-                <p style={{ margin: 0 }}>{item.description}</p>
-              </div>
-            </div>
-          ))}
-
-          {/* Professional */}
-          {timelineData.professional.map((item) => (
-            <div
-              key={`${item.title}-${item.year}`}
-              style={{
-                position: "relative",
-                width: "50%",
-                padding: "1rem",
-                textAlign: "left",
-                left: "50%"
-              }}
-            >
-              {/* Dot */}
-              <span
-                style={{
-                  position: "absolute",
-                  top: "20px",
-                  left: "-10px",
-                  width: "20px",
-                  height: "20px",
-                  background: "#ff6b6b",
-                  borderRadius: "50%",
-                  border: "3px solid white",
-                  boxShadow: "0 0 0 2px #ff6b6b"
-                }}
-              />
-              <div
-                style={{
-                  background: "#fff8f8",
-                  padding: "1rem",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
-                }}
-              >
-                <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
-                <h4 style={{ margin: "0 0 0.5rem", color: "#ff6b6b" }}>{item.year}</h4>
-                <p style={{ margin: 0 }}>{item.description}</p>
+                <h4
+                  style={{
+                    margin: "0 0 0.5rem",
+                    color: item.type === "education" ? "#0077b6" : "#ff6b6b"
+                  }}
+                >
+                  {item.year}
+                </h4>
+                <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                  {item.description.map((desc) => (
+                    <li key={desc} style={{ marginBottom: "0.3rem" }}>
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
