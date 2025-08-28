@@ -416,25 +416,36 @@ export default function PredictFire({ onClose }) {
                 [Figure 5] illustrates the ROC curves of each model, allowing a visual examination of the relationship between the True Positive Rate (TPR) and the False Positive Rate (FPR), while [Figure 6] presents the Precision-Recall curves, providing an intuitive understanding of model performance for the positive class under class imbalance.<br />
                 These results demonstrate that ROC-AUC alone is insufficient for adequately evaluating predictive performance in rare-event scenarios, thereby underscoring the necessity of complementary metrics such as PR-AUC. Furthermore, although this study attempted to mitigate the imbalance problem by combining oversampling and undersampling techniques, the characteristics of the dataset revealed inherent limitations in improving wildfire detection performance.
             </p>
-            {/* Figure 5 */}
-            <img
-            src={fire5}
-            alt="Figure 5"
-            style={{ maxWidth: "550px", height: "auto", display: "block", margin: "1rem auto" }}
-            />
-            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
-            [Figure 5] ROC curves of models
-            </p>
+            {/* Figure 5 & 6 나란히 배치 */}
+            <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "1rem",
+                margin: "1rem 0",
+            }}
+            >
+            <div style={{ flex: 1, textAlign: "center" }}>
+                <img
+                src={fire5}
+                alt="Figure 5"
+                style={{ maxWidth: "100%", height: "auto" }}
+                />
+                <p style={{ fontSize: "0.9rem", color: "gray" }}>[Figure 5] ROC curves</p>
+            </div>
 
-            {/* Figure 6 */}
-            <img
-            src={fire6}
-            alt="Figure 6"
-            style={{ maxWidth: "550px", height: "auto", display: "block", margin: "1rem auto" }}
-            />
-            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
-            [Figure 6] Precision–Recall curves of models
-            </p>        
+            <div style={{ flex: 1, textAlign: "center" }}>
+                <img
+                src={fire6}
+                alt="Figure 6"
+                style={{ maxWidth: "100%", height: "auto" }}
+                />
+                <p style={{ fontSize: "0.9rem", color: "gray" }}>
+                [Figure 6] Precision–Recall curves
+                </p>
+            </div>
+            </div>      
           </li>
         </ol>
 
