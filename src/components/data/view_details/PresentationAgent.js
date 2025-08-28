@@ -51,7 +51,7 @@ export default function PresentationAgent({ onClose }) {
           ✖
         </button>
 
-        <h2>Presentation Agent</h2>
+        <h2>Automated Presentation Generation System Using a Multimodal VLM-LLM-TTS Pipeline</h2>
         <p>
           <b>Period:</b> Mar 2025 – Apr 2025
         </p>
@@ -70,8 +70,7 @@ export default function PresentationAgent({ onClose }) {
           psychological burden associated with presentations. To overcome this
           limitation, the Presentation Agent aims to minimize unnecessary burdens
           on presenters and to support them in concentrating on the delivery of content
-          and messages.
-          
+          and messages.<br />
           To achieve this, the Presentation Agent automatically analyzes the text
           and images contained in presentation materials, identifies key visual
           elements, and, when necessary, converts the content of images into explanatory
@@ -82,8 +81,7 @@ export default function PresentationAgent({ onClose }) {
           Language Model (LLM) processes both the textual content and image descriptions
           to compose scripts that reflect logical flow and contextual coherence, while
           Text-to-Speech (TTS) technology transforms them into natural and
-          listener-friendly speech, producing highly complete presentation materials.
-         
+          listener-friendly speech, producing highly complete presentation materials.<br />
           The Presentation Agent integrates the entire process—from VLM-based
           image importance assessment and description generation, to LLM-based script
           composition, and TTS-based speech synthesis—into a single pipeline. In
@@ -109,7 +107,7 @@ export default function PresentationAgent({ onClose }) {
               was utilized to extract text and image data from each page. The extracted
               images were processed using a Vision-Language Model (VLM) to determine
               whether they represented essential visual elements for the presentation,
-              such as charts, graphs, and tables, or were merely decorative images.
+              such as charts, graphs, and tables, or were merely decorative images.<br />
               However, at the initial stage, decorative images and key visuals were
               often confused, resulting in unnecessary image descriptions being
               included in the script. To address this problem, as illustrated in
@@ -139,8 +137,7 @@ export default function PresentationAgent({ onClose }) {
               generate contextually appropriate explanations without unnecessary
               greetings. This segmented prompt design improved both the logical
               coherence and readability of the scripts and was shown in actual testing
-              to significantly reduce the occurrence of repetitive sentences.
-
+              to significantly reduce the occurrence of repetitive sentences.<br />
               [Figure 2] presents the user interface for script generation, which
               allows users to directly modify the generated scripts and play the
               corresponding speech. Through this interface, users can review and edit
@@ -189,7 +186,7 @@ export default function PresentationAgent({ onClose }) {
               and transformed into descriptive text that is incorporated into the
               script. The generated script and synthesized speech are combined to
               provide the presenter with final presentation materials ready for
-              immediate use.
+              immediate use.<br />
 
               The lower section, referred to as the chatbot architecture, stores the
               entire presentation content in a VectorDB and provides real-time answers
@@ -221,13 +218,13 @@ export default function PresentationAgent({ onClose }) {
           generation process, unnecessary repetition of greetings was reduced, while
           contextual consistency and readability were improved. At the TTS stage, SSML
           tags were applied to key terms to assign intonation and emphasis, increasing
-          audience engagement and allowing critical points to be easily understood.
+          audience engagement and allowing critical points to be easily understood.<br />
 
           The system was designed not only to shorten preparation time prior to
           presentations but also to enable real-time responses to audience questions
           through a VectorDB-based Q&amp;A chatbot during the presentation. This allowed
           presenters to focus on content organization and audience interaction, thereby
-          achieving a more efficient and professional presentation environment.
+          achieving a more efficient and professional presentation environment.<br />
 
           Nevertheless, limitations remain in terms of token overflow. Although partially
           addressed, lengthy presentation materials with numerous slides still pose
@@ -235,14 +232,14 @@ export default function PresentationAgent({ onClose }) {
           maintaining global context, the LLM may approach its token limit, leading to
           potential omission of slides or abnormal outputs. While strategies such as
           slide-level segmentation and summarization were employed to mitigate these
-          issues, further token optimization is required for processing long documents.
+          issues, further token optimization is required for processing long documents.<br />
 
           Moreover, the current system depends on external APIs such as GPT and Google
           Cloud, which introduces constraints regarding security and independence.
           Service quality may also be affected by the reliability or usage limitations of
           these APIs. In actual prototype demonstrations, performance degradation was
           observed when the GPT model’s image transformation functionality failed,
-          underscoring the need for alternatives to ensure system consistency.
+          underscoring the need for alternatives to ensure system consistency.<br />
 
           Future work will involve transitioning away from external API-based
           architectures toward locally operable models to enhance security and stability.

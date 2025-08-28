@@ -1,4 +1,5 @@
 import React from "react";
+import deepprint1 from "../../../assets/deepprint1.png";
 
 export default function DeepPrint({ onClose }) {
   return (
@@ -31,7 +32,7 @@ export default function DeepPrint({ onClose }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 닫기 버튼 */}
+        {/* Close button */}
         <button
           type="button"
           onClick={onClose}
@@ -48,171 +49,236 @@ export default function DeepPrint({ onClose }) {
           ✖
         </button>
 
-        <h2>DeepPrint: 아동 그림 심리 분석 보조 시스템</h2>
-        <p>기간: 2025.02 ~ 2025.03</p>
-        <p>키워드: #ComputerVision, #LLM, #RAG, #Rule-based</p>
-
-        <h3>01. 서론</h3>
+        <h2>
+          Children Drawings Using Object Detection and Natural Language Processing Models Psychological Analysis Assistance System
+        </h2>
         <p>
-          HTP(집-나무-사람) 검사는 피검자의 심리 상태와 성격 특성을 그림을 통해
-          분석하는 대표적인 투사 검사 기법이다. 그러나 전통적인 분석 과정은
-          숙련된 전문가의 경험과 주관에 크게 의존하며, 분석 속도와 일관성 면에서
-          한계가 존재한다. 특히, 그림 속 객체의 형태·크기·위치·비율 등 다양한
-          시각적 요소를 정량적으로 측정하고 해석하는 과정은 많은 시간과 인적
-          자원이 필요하다.
+          <b>Period:</b> Feb 2025 – Mar 2025
         </p>
         <p>
-          이러한 한계를 극복하기 위해 본 프로젝트 DeepPrint는 AI 기반 HTP 검사
-          보조 시스템을 개발하였다. YOLOv11 객체 감지 모델을 통해 ‘집’, ‘나무’,
-          ‘사람(성별 구분)’을 자동 탐지하고, 감지 결과를 JSON 형식으로 변환하여
-          분석에 활용하였다. 이후 룰 기반 분석 로직과 Gemini LLM을 결합하여
-          시각 정보를 해석하는 멀티모달 구조를 구현하였다. 이를 통해 단순 객체
-          인식을 넘어, 시각 정보와 언어 모델을 결합한 심층적 심리 해석이
-          가능해졌으며, 전문가 의존성을 줄이고 분석 결과의 속도와 표준화를
-          지원할 수 있게 되었다.
+          <b>Keywords:</b> #ComputerVision, #LLM, #RAG, #Rule-based
         </p>
 
-        <h3>02. 수행 과정</h3>
-        <h4>1. 데이터 수집</h4>
+        <h3>01. Introduction</h3>
         <p>
-          본 프로젝트에서는 7~13세 아동 7,000명으로부터 수집한 HTP 그림
-          56,000건(JPG)과 각 그림 내 주요 객체(집, 나무, 여자, 남자)에 대한
-          바운딩 박스 라벨(JSON)을 구축하였다. 데이터는 학습, 검증, 테스트
-          세트로 재구성하였다.
+          The House-Tree-Person (HTP) test is a representative projective technique used to analyze
+          the psychological state and personality traits of an individual through drawings. However,
+          the traditional analysis process depends heavily on the expertise and subjectivity of trained
+          professionals, which limits both speed and consistency. In particular, the quantitative
+          measurement and interpretation of visual elements such as shape, size, position, and
+          proportion require significant time and human resources.<br />
+          To address these limitations, this project developed DeepPrint, an AI-based auxiliary system
+          for HTP test analysis. The system utilizes the YOLOv11 object detection model to
+          automatically identify “house,” “tree,” and “person” (with gender distinction) and converts
+          detection results into JSON format for analysis. Subsequently, rule-based logic is combined
+          with Google’s Gemini large language model (LLM) to interpret the detected visual information
+          in psychological terms, thereby realizing a multimodal analytical framework.<br />
+          This approach not only recognizes objects but also enables deeper psychological interpretation
+          through the integration of visual information with a language model. The process reduces
+          subjective variation and delivers standardized results more quickly. In the future, the system
+          aims to expand beyond the HTP test to other projective assessments such as the Kinetic Family
+          Drawing (KFD) and the Bender Gestalt Test (BGT), ultimately evolving into an AI-based
+          psychological evaluation platform capable of processing both visual and linguistic data.
         </p>
 
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            margin: "1rem 0",
-            fontSize: "0.9rem",
-          }}
-        >
-          <thead>
-            <tr style={{ background: "#f0f0f0" }}>
-              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>클래스</th>
-              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>수량</th>
-              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>비율</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>집</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000건</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>나무</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000건</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>여자사람</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000건</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>남자사람</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000건</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
-          [표 1] HTP 데이터셋 클래스별 분포
-        </p>
-
-        <h4>2. 객체 감지 모델 학습</h4>
+        <h3>02. Procedure</h3>
         <p>
-          YOLOv11 모델을 학습 데이터에 맞추어 HTP 전용 객체 감지 모델로 학습하였다.
-          데이터 전처리 단계에서 라벨 오류, 손상 파일, 중복 라벨 등을 수정하였으며,
-          이미지 크기를 640px로 통일하였다. 학습은 50 epoch, batch size 8로 수행되었고,
-          데이터 증강 기법을 병행하여 다양한 그림 스타일에 대응할 수 있도록 하였다.
-          모델 성능 평가는 mAP50 지표를 사용하였다.
+          In this process, each team member applied different object detection and LLM models; the
+          description below presents the models and procedures that I personally implemented.
         </p>
+        <ol>
+          <li>
+            <b>Data Collection</b>
+            <p>
+              For this project, a dataset of 56,000 HTP drawings (house, tree, person) was collected
+              from 7,000 children aged 7–13. The dataset was provided in JPG format with bounding box
+              labels (JSON) for the main objects (house, tree, female, male).<br />
+              The dataset was originally divided into Train (11,200 samples) and Validation (1,400
+              samples). Since test data were not separately provided due to policy, the dataset was
+              restructured into Train (9,800 samples), Validation (1,400 samples), and Test (1,400
+              samples).<br />
+              [Table 1] shows the distribution of samples by class.
+            </p>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                margin: "1rem 0",
+                fontSize: "0.9rem",
+              }}
+            >
+              <thead>
+                <tr style={{ background: "#f0f0f0" }}>
+                  <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Class</th>
+                  <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Quantity</th>
+                  <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Proportion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>House</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Tree</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Female Person</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Male Person</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>14,000</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>25%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Table 1] Distribution of HTP dataset by class
+            </p>
+          </li>
 
-        <h4>3. 룰 기반 채점 시스템</h4>
-        <p>
-          YOLOv11 모델의 감지 결과를 JSON 형식으로 변환한 뒤, 룰 기반 분석 로직을
-          적용하였다. 채점 규칙은 HTP 검사 해석 지침과 임상 전문가의 경험을 참고하여
-          설계되었으며, 객체의 크기·위치·비율·배치 순서를 정량화하여 심리적 의미와
-          매핑하였다.
-        </p>
+          <li>
+            <b>Object Detection Model Training</b>
+            <p>
+              In this project, YOLOv11 was trained as the dedicated object detection model for HTP
+              drawings. The dataset was reconstructed into Train (9,800), Validation (1,400), and Test
+              (1,400) sets, and reorganized into the required <code>data.yaml</code> format with
+              images, labels, and JSON directories. Preprocessing included correcting mismatches
+              between images and labels, removing corrupted files, and eliminating duplicates to ensure
+              training stability.<br />
+              The model was trained for 50 epochs to enable sufficient learning, with image resolution
+              standardized at 640 pixels to balance computational efficiency and recognition accuracy.
+              Batch size was set to 8 images per step to optimize memory and speed. Data augmentation
+              techniques were applied to enhance robustness to varying drawing styles.<br />
+              Performance was evaluated using the mAP50 metric, and the model was optimized to reliably
+              detect “house,” “tree,” “female person,” and “male person” within HTP drawings.
+            </p>
+          </li>
 
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            margin: "1rem 0",
-            fontSize: "0.9rem",
-          }}
-        >
-          <thead>
-            <tr style={{ background: "#f0f0f0" }}>
-              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>표현</th>
-              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>해석</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>눈을 그리지 않음</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                타인과 감정을 교류하는 데 극심한 불안감을 느낌, 사고장애 가능성
-              </td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>한쪽 눈만 그림</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                감정 교류에서 접근과 회피의 양가 감정
-              </td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                머리카락/모자로 눈을 가림
-              </td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                사회적 불안, 감정 표현 위축, 타인에 대한 적개심
-              </td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>눈이 너무 큼</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                감정 교류에서 과도한 예민함
-              </td>
-            </tr>
-            <tr>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>눈이 너무 작음</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                사회적 상호작용에서 위축, 회피 경향
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
-          [표 2] 심리 해석 규칙 예시
-        </p>
+          <li>
+            <b>Rule-Based Scoring System</b>
+            <p>
+              The object information detected by YOLOv11 was converted into JSON format and used to
+              perform psychological interpretation through rule-based analysis logic. This logic extends
+              beyond merely confirming object presence, quantifying visual elements such as size,
+              position, proportion, and arrangement, and mapping them to psychological meanings.<br />
+              Interpretation rules were designed with reference to HTP guidelines and clinical expertise,
+              codifying how variations in object size, shape, and placement reflect psychological
+              implications. For example, omission of certain features, abnormal proportions, deliberate
+              concealment, or exaggerated emphasis were each used as cues for inferring mental states.<br />
+              [Table 2] provides selected examples of interpretation rules.
+            </p>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                margin: "1rem 0",
+                fontSize: "0.9rem",
+              }}
+            >
+              <thead>
+                <tr style={{ background: "#f0f0f0" }}>
+                  <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Expression</th>
+                  <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Eyes not drawn</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Severe anxiety in emotional exchange, possible thought disorder
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Only one eye drawn</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Ambivalent emotions of approach and avoidance in relationships
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Eyes covered with hair/hat
+                  </td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Social anxiety, inhibited emotional expression, hostility toward others
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Eyes too large</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Excessive sensitivity in emotional exchange
+                  </td>
+                </tr>
+                <tr>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Eyes too small</td>
+                  <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Withdrawal and avoidance tendencies in social interaction
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Table 2] Examples of psychological interpretation rules
+            </p>
+          </li>
 
-        <h4>4. 멀티모달 시스템 구현</h4>
-        <p>
-          감지된 시각 정보를 JSON 구조로 정규화하고, 룰 기반 채점 결과와 결합하여
-          최종적으로 Gemini LLM에 입력하였다. 이를 통해 정량적 채점 결과와 심리학적
-          맥락을 종합한 해석 문장을 생성하는 멀티모달 분석 파이프라인을 완성하였다.
-        </p>
+          <li>
+            <b>Multimodal System Implementation</b>
+            <p>
+              Based on YOLOv11 object detection outputs, rule-based logic was applied, and the results
+              were integrated for psychological interpretation, forming a multimodal analytical structure.<br />
+              The HTP drawings were automatically processed to detect “house,” “tree,” “female person,”
+              and “male person,” extracting features such as location, size, and proportion. These data
+              were converted into standardized JSON format, to which predefined psychological rules were
+              applied, generating scores for each evaluation item. The scored data were then input into
+              an LLM, which synthesized interpretations by combining score patterns and item meanings
+              into psychologically contextualized statements.<br />
+              As illustrated in [Figure 1], this pipeline connects visual analysis, quantitative scoring,
+              and language-model-based interpretation in sequential stages. This design standardizes
+              analysis, improves speed and consistency, and reduces expert subjectivity.
+            </p>
+            <img
+              src={deepprint1}
+              alt="Figure 1"
+              style={{ maxWidth: "550px", height: "auto", display: "block", margin: "1rem auto" }}
+            />
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Figure 1] System Architecture
+            </p>
+          </li>
+        </ol>
 
-        <h3>03. 결론</h3>
+        <h3>03. Conclusion</h3>
         <p>
-          본 프로젝트는 HTP 그림 해석을 자동화·표준화하기 위해 객체 감지·룰 기반 분석·LLM
-          해석을 통합한 AI 보조 시스템을 구축하였다. YOLOv11 모델은 주요 객체를 정확히 감지하였고,
-          룰 기반 로직은 이를 정량적으로 평가했으며, Gemini LLM은 심리학적 맥락을 반영한 해석을
-          제공하였다. 이 과정은 전문가 주관을 줄이고, 분석 속도와 일관성을 향상시켰다.
+          This project implemented an AI-based auxiliary system that integrates object detection,
+          rule-based analysis, and LLM interpretation in order to automate and standardize the
+          traditional HTP test analysis. YOLOv11 was employed to detect major objects, rule-based
+          scoring logic was applied for quantitative evaluation, and Gemini LLM was used to
+          interpret the results in psychological terms, completing a multimodal analytical framework.<br />
+          This approach reduced subjectivity, enabled large-scale data to be analyzed consistently
+          and quickly, and combined structural quantitative information with in-depth interpretation,
+          thereby producing more reliable results than either method alone. Future work aims to
+          extend the system to other projective tests such as KFD and BGT, and to adopt a modular
+          architecture that allows flexible adaptation of detection models and scoring rules. In
+          addition, applying feedback loops to the LLM-based interpretation process will help
+          continuously improve interpretation quality.<br />
+          The system has the potential to enhance efficiency in clinical, educational, and research
+          contexts, while supporting expert decision-making through standardized results.
         </p>
         <p>
-          향후 본 시스템은 HTP뿐만 아니라 KFD(가족화 검사), BGT(벤더 형태 검사) 등
-          다양한 투사 검사로 확장 가능하다. 또한 모듈형 구조를 통해 감지 모델과 해석 규칙을
-          유연하게 변경할 수 있으며, LLM 해석 과정에 피드백 루프를 적용하여 지속적으로 품질을
-          개선할 수 있다. 본 시스템은 임상, 교육, 연구 환경에서 전문가의 의사결정을 지원하는
-          도구로 활용될 수 있을 것으로 기대된다.
+          <b>DEMO Video:</b>{" "}
+          <a
+            href="https://www.youtube.com/watch?v=xcK26iobhLY&feature=youtu.be"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Youtube Link
+          </a>
         </p>
       </div>
     </div>
