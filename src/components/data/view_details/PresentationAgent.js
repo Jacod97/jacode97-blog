@@ -61,19 +61,18 @@ export default function PresentationAgent({ onClose }) {
 
         <h3>01. Introduction</h3>
         <p>
-          This study proposes the <b>Presentation Agent</b>, which originates from the
+          This study proposes the Presentation Agent, which originates from the
           recognition that in modern society, the ability to effectively deliver one’s
           ideas and achievements in diverse contexts such as interviews, lectures, and
           presentations has become an evaluation factor as important as actual
           professional competence. Nevertheless, there are frequent cases in which
           individuals with outstanding capabilities are undervalued due to fear of or
           psychological burden associated with presentations. To overcome this
-          limitation, the <b>Presentation Agent</b> aims to minimize unnecessary burdens
+          limitation, the Presentation Agent aims to minimize unnecessary burdens
           on presenters and to support them in concentrating on the delivery of content
           and messages.
-        </p>
-        <p>
-          To achieve this, the <b>Presentation Agent</b> automatically analyzes the text
+          
+          To achieve this, the Presentation Agent automatically analyzes the text
           and images contained in presentation materials, identifies key visual
           elements, and, when necessary, converts the content of images into explanatory
           text. A Vision-Language Model (VLM) is employed to assess the importance of
@@ -84,9 +83,8 @@ export default function PresentationAgent({ onClose }) {
           to compose scripts that reflect logical flow and contextual coherence, while
           Text-to-Speech (TTS) technology transforms them into natural and
           listener-friendly speech, producing highly complete presentation materials.
-        </p>
-        <p>
-          The <b>Presentation Agent</b> integrates the entire process—from VLM-based
+         
+          The Presentation Agent integrates the entire process—from VLM-based
           image importance assessment and description generation, to LLM-based script
           composition, and TTS-based speech synthesis—into a single pipeline. In
           addition, a real-time Q&amp;A chatbot, built upon the presentation materials,
@@ -142,8 +140,7 @@ export default function PresentationAgent({ onClose }) {
               greetings. This segmented prompt design improved both the logical
               coherence and readability of the scripts and was shown in actual testing
               to significantly reduce the occurrence of repetitive sentences.
-            </p>
-            <p>
+
               [Figure 2] presents the user interface for script generation, which
               allows users to directly modify the generated scripts and play the
               corresponding speech. Through this interface, users can review and edit
