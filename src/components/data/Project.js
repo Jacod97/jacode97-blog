@@ -5,6 +5,7 @@ export default function Projects({ onClose = () => {} }) {
 
   const projectList = [
     {
+      id: "proj-1",
       title: "Presentation Agent",
       period: "Mar 2025 – Apr 2025",
       keywords: "#LangChain, #RAG, #Multimodal, #TTS",
@@ -13,6 +14,7 @@ Extracted text and images from presentation slides (PDF) and generated page-wise
 Implemented TTS integration for fully automated presentation deliver.`,
     },
     {
+      id: "proj-2",
       title: "DACON: Construction Accident Prevention & Response Generation",
       period: "Feb 2025 – Mar 2025",
       keywords: "#LLM, #RAG, #Ollama",
@@ -20,6 +22,7 @@ Implemented TTS integration for fully automated presentation deliver.`,
 Built a RAG-based LLM system to analyze construction accident data, identify causes, and generate response messages by retrieving similar past cases.`,
     },
     {
+      id: "proj-3",
       title: "Deep Print",
       period: "Feb 2025 – Mar 2025",
       keywords: "#ComputerVision, #LLM, #RAG, #Rule-based",
@@ -28,6 +31,7 @@ Detected objects and analyzed visual attributes (size, position, composition) us
 Combined rule-based evaluation with LLM interpretation to generate automated psychological assessments.`,
     },
     {
+      id: "proj-4",
       title: "Predict_fire_forest",
       period: "Jan 2025 – Feb 2025",
       keywords: "#SpatialData, #DataMining, #MachineLearning",
@@ -69,8 +73,8 @@ Integrated meteorological data, population density, and agricultural land usage 
       >
         <h2>Projects</h2>
         <ul style={{ paddingLeft: "1rem" }}>
-          {projectList.map((p, idx) => (
-            <li key={idx} style={{ marginBottom: "1.5rem" }}>
+          {projectList.map((p) => (
+            <li key={p.id} style={{ marginBottom: "1.5rem" }}>
               <h3>
                 {p.title}{" "}
                 <span style={{ fontSize: "0.9rem", color: "gray" }}>
@@ -78,8 +82,6 @@ Integrated meteorological data, population density, and agricultural land usage 
                 </span>
               </h3>
               <p><b>Keywords:</b> {p.keywords}</p>
-
-              {/* 줄바꿈 적용 */}
               <p style={{ whiteSpace: "pre-line" }}>{p.description}</p>
 
               {/* View Details Button */}
