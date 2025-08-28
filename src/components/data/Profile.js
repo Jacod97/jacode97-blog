@@ -1,3 +1,15 @@
+import pythonIcon from "../../assets/python.png";
+import pytorchIcon from "../../assets/PyTorch.png";
+import sklearnIcon from "../../assets/scikit-learn.png";
+import fastapiIcon from "../../assets/FastAPI.png";
+import langchainIcon from "../../assets/langchain.png";
+import opencvIcon from "../../assets/OpenCV.png";
+import linuxIcon from "../../assets/Linux.png";
+import sqliteIcon from "../../assets/SQLite.png";
+import githubIcon from "../../assets/GitHub.png";
+import reactIcon from "../../assets/React.png";
+import postgresqlIcon from "../../assets/PostgresSQL.png";
+
 export default function Profile({ onClose = () => {} }) {
   const profile = {
     email: "jacode6894@gmail.com",
@@ -12,17 +24,17 @@ export default function Profile({ onClose = () => {} }) {
       "Effective communication and collaboration skills with various stakeholders"
     ],
     skills: [
-      { name: "Python", icon: "../../assets/python.png" },
-      { name: "PyTorch", icon: "/assets/pytorch.png" },
-      { name: "scikit-learn", icon: "/assets/scikitlearn.png" },
-      { name: "FastAPI", icon: "/assets/fastapi.png" },
-      { name: "LangChain", icon: "/assets/langchain.png" },
-      { name: "OpenCV", icon: "/assets/opencv.png" },
-      { name: "Linux", icon: "/assets/linux.png" },
-      { name: "SQLite", icon: "/assets/sqlite.png" },
-      { name: "GitHub", icon: "/assets/github.png" },
-      { name: "React", icon: "/assets/react.png" },
-      { name: "PostgreSQL", icon: "/assets/postgresql.png" }
+      { name: "Python", icon: pythonIcon },
+      { name: "PyTorch", icon: pytorchIcon },
+      { name: "scikit-learn", icon: sklearnIcon },
+      { name: "FastAPI", icon: fastapiIcon },
+      { name: "LangChain", icon: langchainIcon },
+      { name: "OpenCV", icon: opencvIcon },
+      { name: "Linux", icon: linuxIcon },
+      { name: "SQLite", icon: sqliteIcon },
+      { name: "GitHub", icon: githubIcon },
+      { name: "React", icon: reactIcon },
+      { name: "PostgreSQL", icon: postgresqlIcon },
     ]
   };
 
