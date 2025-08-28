@@ -26,17 +26,18 @@ export default function Profile({ onClose = () => {} }) {
     skills: [
       { name: "Python", icon: pythonIcon },
       { name: "PyTorch", icon: pytorchIcon },
-      { name: "scikit-learn", icon: sklearnIcon },
       { name: "FastAPI", icon: fastapiIcon },
+      { name: "scikit-learn", icon: sklearnIcon },
       { name: "LangChain", icon: langchainIcon },
       { name: "OpenCV", icon: opencvIcon },
       { name: "Linux", icon: linuxIcon },
       { name: "SQLite", icon: sqliteIcon },
+      { name: "PostgreSQL", icon: postgresqlIcon },
       { name: "GitHub", icon: githubIcon },
       { name: "React", icon: reactIcon },
-      { name: "PostgreSQL", icon: postgresqlIcon },
     ]
   };
+
 
   return (
     <div
@@ -60,17 +61,17 @@ export default function Profile({ onClose = () => {} }) {
       <div
         style={{
           background: "white",
-          padding: "2rem",
+          padding: "1.5rem",     // 전체 padding 살짝 줄임
           borderRadius: "10px",
-          width: "700px",
+          width: "650px",
           maxHeight: "80vh",
           overflowY: "auto",
-          boxShadow: "0 8px 16px rgba(0,0,0,0.2)"
+          boxShadow: "0 6px 12px rgba(0,0,0,0.15)"
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Title */}
-        <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1.5rem" }}>
+        <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}>
           Profile
         </h1>
 
@@ -93,21 +94,21 @@ export default function Profile({ onClose = () => {} }) {
         </p>
 
         {/* Abilities */}
-        <h3 style={{ marginTop: "1.5rem" }}>Abilities</h3>
-        <ul>
+        <h3 style={{ marginTop: "1rem" }}>Abilities</h3>
+        <ul style={{ textAlign: "left", paddingLeft: "1.2rem" }}>
           {profile.abilities.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} style={{ marginBottom: "0.4rem" }}>{item}</li>
           ))}
         </ul>
 
         {/* Skills */}
-        <h3 style={{ marginTop: "1.5rem" }}>Skills</h3>
+        <h3 style={{ marginTop: "1rem" }}>Skills</h3>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)", // ⬅️ 한 줄에 4개
-            gap: "1.5rem",
-            marginTop: "1rem",
+            gridTemplateColumns: "repeat(4, 1fr)", // 한 줄에 4개
+            gap: "0.8rem",                         // 간격 좁힘
+            marginTop: "0.8rem",
           }}
         >
           {profile.skills.map((skill) => (
@@ -122,25 +123,25 @@ export default function Profile({ onClose = () => {} }) {
             >
               <div
                 style={{
-                  width: "90px",  // ⬅️ 크기 키움
+                  width: "90px",
                   height: "90px",
-                  borderRadius: "50%", // ⬅️ 다시 원형
-                  border: "2px solid #ddd",
+                  borderRadius: "50%", // 원형
+                  border: "1px solid #ddd",
                   background: "white",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   overflow: "hidden",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.1)"
                 }}
               >
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  style={{ width: "70%", height: "70%", objectFit: "contain" }}
+                  style={{ width: "75%", height: "75%", objectFit: "contain" }}
                 />
               </div>
-              <span style={{ marginTop: "0.5rem", fontSize: "0.9rem" }}>
+              <span style={{ marginTop: "0.3rem", fontSize: "0.85rem" }}>
                 {skill.name}
               </span>
             </div>
@@ -152,14 +153,14 @@ export default function Profile({ onClose = () => {} }) {
           type="button"
           onClick={onClose}
           style={{
-            marginTop: "2rem",
-            padding: "0.6rem 1.2rem",
+            marginTop: "1.5rem",
+            padding: "0.5rem 1rem",
             border: "none",
             borderRadius: "5px",
             background: "#007bff",
             color: "white",
             cursor: "pointer",
-            fontSize: "1rem"
+            fontSize: "0.95rem"
           }}
         >
           닫기
