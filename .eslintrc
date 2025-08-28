@@ -19,7 +19,10 @@
         "tsx": "never",
         "json": "never"
       }
-    ]
+    ],
+    "react/prop-types": "off",
+    "jsx-a11y/click-events-have-key-events": "off",     // div onClick 허용
+    "jsx-a11y/no-static-element-interactions": "off"    // div 클릭 이벤트 허용
   },
   "settings": {
     "import/resolver": {
