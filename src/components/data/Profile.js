@@ -107,7 +107,7 @@ export default function Profile({ onClose = () => {} }) {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)", // 한 줄에 4개
-            gap: "0.8rem",                         // 간격 좁힘
+            gap: "0.4rem",                         // 간격 좁힘
             marginTop: "0.8rem",
           }}
         >
