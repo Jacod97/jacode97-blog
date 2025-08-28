@@ -158,6 +158,7 @@ export default function PredictFire({ onClose }) {
                 Meteorological variables such as temperature, humidity, and wind speed were replaced with the monthly averages of the corresponding region, thereby preserving both seasonal and regional characteristics. 
                 Through this preprocessing procedure, data completeness was ensured and potential errors during model training were minimized.
             </p>
+            {/* [Table 1] Missing value handling */}
             <table
             style={{
                 width: "100%",
@@ -168,27 +169,51 @@ export default function PredictFire({ onClose }) {
             >
             <thead>
                 <tr style={{ background: "#f0f0f0" }}>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Item Type
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Variable Name
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Processing Rule
-                </th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Item Type</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Variable Name</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Processing Rule</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Precipitation</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>rain</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Missing values replaced with 0</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Land-use</td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    (Example) Precipitation
+                    total_area, field_area, paddy_area, cemetery_area
                 </td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    rain
+                    Replaced with previous year’s values for same region
+                </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Temperature</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    tempAvg, tempMin, tempMax
                 </td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Missing values replaced with 0
+                    Replaced with monthly averages of corresponding region
+                </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Humidity</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    humMin, humAvg
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Replaced with monthly averages of corresponding region
+                </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Wind</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    windMax, windAvg
+                </td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                    Replaced with monthly averages of corresponding region
                 </td>
                 </tr>
             </tbody>
@@ -212,6 +237,7 @@ export default function PredictFire({ onClose }) {
                 To improve model performance, hyperparameter tuning was conducted using GridSearchCV for Logistic Regression, Random Forest, XGBoost, and LGBMClassifier. For each model, key hyperparameters were defined, and various combinations of values were tested to identify the configuration that achieved the best performance.<br />
                 The definitions and roles of the hyperparameters are summarized in [Table 2], and the search ranges of the hyperparameters used in the actual experiments for each model are presented in [Table 3]. Through this process, parameter combinations suitable for the characteristics of each model were selected to maximize predictive performance.
             </p>
+            {/* [Table 2] Definition of hyperparameters */}
             <table
             style={{
                 width: "100%",
@@ -222,22 +248,36 @@ export default function PredictFire({ onClose }) {
             >
             <thead>
                 <tr style={{ background: "#f0f0f0" }}>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Hyperparameter
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Description
-                </th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Hyperparameter</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    C
-                </td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>C</td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
                     Regularization strength (smaller values → stronger regularization)
                 </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>n_estimators</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Number of trees</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>max_depth</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Maximum tree depth</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>min_samples_leaf</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Minimum samples per leaf</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>num_leaves</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Number of leaves per tree</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>learning_rate</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Learning rate</td>
                 </tr>
             </tbody>
             </table>
@@ -245,6 +285,7 @@ export default function PredictFire({ onClose }) {
             [Table 2] Definition of hyperparameters
             </p>
 
+            {/* [Table 3] Hyperparameter search space */}
             <table
             style={{
                 width: "100%",
@@ -255,27 +296,36 @@ export default function PredictFire({ onClose }) {
             >
             <thead>
                 <tr style={{ background: "#f0f0f0" }}>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Model
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Hyperparameter
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Value Range
-                </th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Model</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Hyperparameter</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Value Range</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>LogisticRegression</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>C</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>[0.01, 0.1, 1, 10, 100]</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>RandomForestClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>n_estimators, max_depth, min_samples_leaf</td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    LogisticRegression
+                    n_estimators [100, 300, 500], max_depth [None, 10, 20, 30], min_samples_leaf [2, 5, 10]
                 </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>XGBClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>n_estimators, num_leaves, learning_rate</td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    C
+                    n_estimators [100, 300, 500], num_leaves [31, 63, 127], learning_rate [0.01, 0.1, 0.2]
                 </td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>LGBMClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>n_estimators, max_depth, min_samples_leaf</td>
                 <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    [0.01, 0.1, 1, 10, 100]
+                    n_estimators [100, 300, 500], max_depth [None, 10, 20, 30], min_samples_leaf [2, 5, 10]
                 </td>
                 </tr>
             </tbody>
@@ -304,6 +354,7 @@ export default function PredictFire({ onClose }) {
             <p>
                 [Table 4] presents the comparison of Accuracy, ROC-AUC, Precision, Recall, and PR-AUC across the models. Although most models achieved high Accuracy, the low PR-AUC and Recall values indicate that their actual predictive performance for wildfire occurrence was limited.
             </p>
+            {/* [Table 4] Model performance comparison */}
             <table
             style={{
                 width: "100%",
@@ -314,46 +365,46 @@ export default function PredictFire({ onClose }) {
             >
             <thead>
                 <tr style={{ background: "#f0f0f0" }}>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Model
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Accuracy
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    ROC-AUC
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Precision
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    Recall
-                </th>
-                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    PR-AUC
-                </th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Model</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Accuracy</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>ROC-AUC</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Precision</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Recall</th>
+                <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>PR-AUC</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    LogisticRegression
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    0.72
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    0.83
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    0.02
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    0.78
-                </td>
-                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                    0.04
-                </td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>LogisticRegression</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.72</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.83</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.02</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.78</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.04</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>RandomForestClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.99</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.80</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.08</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.03</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.03</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>XGBClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.99</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.81</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.11</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.01</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.04</td>
+                </tr>
+                <tr>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>LGBMClassifier</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.99</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.82</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.03</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.002</td>
+                <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>0.04</td>
                 </tr>
             </tbody>
             </table>
