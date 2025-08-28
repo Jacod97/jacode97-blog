@@ -68,21 +68,26 @@ Integrated meteorological data, population density, and agricultural land usage 
           maxHeight: "80vh",
           overflowY: "auto",
           boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
+          textAlign: "left", // 전체 좌측 정렬
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2>Projects</h2>
-        <ul style={{ paddingLeft: "1rem" }}>
+        <h2 style={{ textAlign: "left" }}>Projects</h2>
+        <ul style={{ paddingLeft: "1rem", textAlign: "left" }}>
           {projectList.map((p) => (
-            <li key={p.id} style={{ marginBottom: "1.5rem" }}>
-              <h3>
+            <li key={p.id} style={{ marginBottom: "1.5rem", textAlign: "left" }}>
+              <h3 style={{ textAlign: "left" }}>
                 {p.title}{" "}
                 <span style={{ fontSize: "0.9rem", color: "gray" }}>
                   ({p.period})
                 </span>
               </h3>
-              <p><b>Keywords:</b> {p.keywords}</p>
-              <p style={{ whiteSpace: "pre-line" }}>{p.description}</p>
+              <p style={{ textAlign: "left" }}>
+                <b>Keywords:</b> {p.keywords}
+              </p>
+              <p style={{ whiteSpace: "pre-line", textAlign: "left" }}>
+                {p.description}
+              </p>
 
               {/* View Details Button */}
               <button
@@ -149,6 +154,7 @@ Integrated meteorological data, population density, and agricultural land usage 
                 maxHeight: "70vh",
                 overflowY: "auto",
                 boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
+                textAlign: "left", // 상세 모달도 좌측 정렬
               }}
               onClick={(e) => e.stopPropagation()}
             >
@@ -162,7 +168,7 @@ Integrated meteorological data, population density, and agricultural land usage 
                   minHeight: "200px",
                   border: "1px dashed #ccc",
                   padding: "1rem",
-                  textAlign: "center",
+                  textAlign: "left",
                 }}
               >
                 (Details will be added here later)
