@@ -18,8 +18,8 @@ export default function Hero() {
           src={profileImg}                // import 방식
           alt="My Profile"
           style={{
-            width: "250px",              // 가로 크기
-            height: "250px",             // 세로 크기
+            width: "400px",              // 가로 크기
+            height: "400px",             // 세로 크기
             borderRadius: "0",           // 네모 모양 (0으로 설정)
             objectFit: "cover",          // 사진이 잘리지 않도록 비율 유지
             boxShadow: "0 4px 8px rgba(0,0,0,0.2)" // 살짝 그림자
