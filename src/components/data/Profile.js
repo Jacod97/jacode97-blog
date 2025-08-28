@@ -112,8 +112,8 @@ export default function Profile({ onClose = () => {} }) {
                 style={{
                   width: "70px",
                   height: "70px",
-                  borderRadius: "50%",
-                  border: "2px solid #ddd",
+                  borderRadius: "8px", // ⬅️ 사각형 (둥근 모서리)
+                  border: "1px solid #ddd",
                   background: "white",
                   display: "flex",
                   justifyContent: "center",
@@ -125,7 +125,7 @@ export default function Profile({ onClose = () => {} }) {
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  style={{ width: "70%", height: "70%", objectFit: "contain" }}
+                  style={{ width: "80%", height: "80%", objectFit: "contain" }}
                 />
               </div>
               <span style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
