@@ -1,16 +1,24 @@
 {
   "files": {
     "main.css": "/jacode97-blog/static/css/main.f855e6bc.css",
-    "main.js": "/jacode97-blog/static/js/main.221931b3.js",
+    "main.js": "/jacode97-blog/static/js/main.6b4a3b2d.js",
     "static/js/453.1cc31462.chunk.js": "/jacode97-blog/static/js/453.1cc31462.chunk.js",
     "static/media/profile.jpg": "/jacode97-blog/static/media/profile.c95d789c406e31a1dbee.jpg",
+    "static/media/python.png": "/jacode97-blog/static/media/python.6a5cbc319ab3ddf8ef92.png",
+    "static/media/linux.png": "/jacode97-blog/static/media/linux.30b87c36aaec73885fd2.png",
+    "static/media/langchain.png": "/jacode97-blog/static/media/langchain.276de4f030cfc269749e.png",
+    "static/media/sqlite.png": "/jacode97-blog/static/media/sqlite.36ccf067991cf00f5766.png",
+    "static/media/scikit-learn.png": "/jacode97-blog/static/media/scikit-learn.6e8fb972f2cbb25af1f6.png",
+    "static/media/postgressql.png": "/jacode97-blog/static/media/postgressql.17c2814e17fd9d441e1f.png",
+    "static/media/opencv.png": "/jacode97-blog/static/media/opencv.619323d409ecad2e7c1b.png",
+    "static/media/react.png": "/jacode97-blog/static/media/react.98ff38735baa4c1b0381.png",
     "index.html": "/jacode97-blog/index.html",
     "main.f855e6bc.css.map": "/jacode97-blog/static/css/main.f855e6bc.css.map",
-    "main.221931b3.js.map": "/jacode97-blog/static/js/main.221931b3.js.map",
+    "main.6b4a3b2d.js.map": "/jacode97-blog/static/js/main.6b4a3b2d.js.map",
     "453.1cc31462.chunk.js.map": "/jacode97-blog/static/js/453.1cc31462.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.221931b3.js"
+    "static/js/main.6b4a3b2d.js"
   ]
 }
