@@ -62,7 +62,7 @@ export default function Profile({ onClose = () => {} }) {
           background: "white",
           padding: "2rem",
           borderRadius: "10px",
-          width: "600px",
+          width: "700px",
           maxHeight: "80vh",
           overflowY: "auto",
           boxShadow: "0 8px 16px rgba(0,0,0,0.2)"
@@ -105,8 +105,8 @@ export default function Profile({ onClose = () => {} }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))",
-            gap: "1rem",
+            gridTemplateColumns: "repeat(4, 1fr)", // ⬅️ 한 줄에 4개
+            gap: "1.5rem",
             marginTop: "1rem",
           }}
         >
@@ -122,10 +122,10 @@ export default function Profile({ onClose = () => {} }) {
             >
               <div
                 style={{
-                  width: "70px",
-                  height: "70px",
-                  borderRadius: "8px", // ⬅️ 사각형 (모서리 살짝 둥글림)
-                  border: "1px solid #ddd",
+                  width: "90px",  // ⬅️ 크기 키움
+                  height: "90px",
+                  borderRadius: "50%", // ⬅️ 다시 원형
+                  border: "2px solid #ddd",
                   background: "white",
                   display: "flex",
                   justifyContent: "center",
@@ -137,10 +137,10 @@ export default function Profile({ onClose = () => {} }) {
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  style={{ width: "80%", height: "80%", objectFit: "contain" }}
+                  style={{ width: "70%", height: "70%", objectFit: "contain" }}
                 />
               </div>
-              <span style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
+              <span style={{ marginTop: "0.5rem", fontSize: "0.9rem" }}>
                 {skill.name}
               </span>
             </div>
