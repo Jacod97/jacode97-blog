@@ -245,7 +245,7 @@ export default function DeepPrint({ onClose }) {
             <img
               src={deepprint1}
               alt="Figure 1"
-              style={{ maxWidth: "auto", height: "300px", display: "block", margin: "1rem auto" }}
+              style={{ maxWidth: "auto", height: "200px", display: "block", margin: "1rem auto" }}
             />
             <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
               [Figure 1] System Architecture
