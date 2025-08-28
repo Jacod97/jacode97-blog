@@ -47,7 +47,7 @@ export default function ChatBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          placeholder="메시지를 입력하세요..."
+          placeholder="Please enter your message..."
         />
         <button
           type="button"
