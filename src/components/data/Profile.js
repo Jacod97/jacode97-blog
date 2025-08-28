@@ -12,7 +12,7 @@ export default function Profile({ onClose = () => {} }) {
       "Effective communication and collaboration skills with various stakeholders"
     ],
     skills: [
-      { name: "Python", icon: "/assets/python.png" },
+      { name: "Python", icon: "../../assets/python.png" },
       { name: "PyTorch", icon: "/assets/pytorch.png" },
       { name: "scikit-learn", icon: "/assets/scikitlearn.png" },
       { name: "FastAPI", icon: "/assets/fastapi.png" },
