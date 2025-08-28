@@ -24,7 +24,7 @@ export default function MainLayout() {
         </button>
 
         {/* Timeline */}
-        <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("experience")}>
+        <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("timeline")}>
           <h2>Timeline</h2>
           <p>Take a look at my journey through school and work!</p>
         </button>

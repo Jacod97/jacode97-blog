@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([
-    { id: 1, from: "bot", text: "안녕하세요! 무엇을 도와드릴까요?" }
+    { id: 1, from: "bot", text: "Have a question about Jae-Sik? Ask me." }
   ]);
   const [input, setInput] = useState("");
 
