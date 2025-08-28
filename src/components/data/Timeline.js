@@ -119,59 +119,58 @@ export default function Timeline({ onClose }) {
             }}
           />
 
-          {timelineData.map((item) => (
-            <div
-              key={`${item.title}-${item.year}`}
-              style={{
-                position: "relative",
-                width: "50%",
-                padding: "1rem",
-                textAlign: item.type === "education" ? "right" : "left",
-                left: item.type === "education" ? 0 : "50%"
-              }}
-            >
-              {/* Dot */}
-              <span
-                style={{
-                  position: "absolute",
-                  top: "20px",
-                  [item.type === "education" ? "right" : "left"]: "-10px",
-                  width: "20px",
-                  height: "20px",
-                  background: item.type === "education" ? "#0077b6" : "#ff6b6b",
-                  borderRadius: "50%",
-                  border: "3px solid white",
-                  boxShadow: `0 0 0 2px ${item.type === "education" ? "#0077b6" : "#ff6b6b"}`
-                }}
-              />
-              {/* Content */}
+          {timelineData.map((item, idx) => {
+            const isLeft = idx % 2 === 0; // 짝수: 왼쪽, 홀수: 오른쪽
+            const color = item.type === "education" ? "#0077b6" : "#ff6b6b";
+            const bgColor = item.type === "education" ? "#f9fcff" : "#fff8f8";
+
+            return (
               <div
+                key={`${item.title}-${item.year}`}
                 style={{
-                  background: item.type === "education" ? "#f9fcff" : "#fff8f8",
+                  position: "relative",
+                  width: "50%",
                   padding: "1rem",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                  textAlign: isLeft ? "right" : "left",
+                  left: isLeft ? 0 : "50%"
                 }}
               >
-                <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
-                <h4
+                {/* Dot */}
+                <span
                   style={{
-                    margin: "0 0 0.5rem",
-                    color: item.type === "education" ? "#0077b6" : "#ff6b6b"
+                    position: "absolute",
+                    top: "20px",
+                    [isLeft ? "right" : "left"]: "-10px",
+                    width: "20px",
+                    height: "20px",
+                    background: color,
+                    borderRadius: "50%",
+                    border: "3px solid white",
+                    boxShadow: `0 0 0 2px ${color}`
+                  }}
+                />
+                {/* Content */}
+                <div
+                  style={{
+                    background: bgColor,
+                    padding: "1rem",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
                   }}
                 >
-                  {item.year}
-                </h4>
-                <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                  {item.description.map((desc) => (
-                    <li key={desc} style={{ marginBottom: "0.3rem" }}>
-                      {desc}
-                    </li>
-                  ))}
-                </ul>
+                  <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
+                  <h4 style={{ margin: "0 0 0.5rem", color }}>{item.year}</h4>
+                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
+                    {item.description.map((desc) => (
+                      <li key={desc} style={{ marginBottom: "0.3rem" }}>
+                        {desc}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom Close */}
