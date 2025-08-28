@@ -3,42 +3,42 @@ import { useState } from "react";
 export default function Projects({ onClose = () => {} }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const projectList = [
+    const projectList = [
     {
-      id: "proj-1",
-      title: "Presentation Agent",
-      period: "Mar 2025 – Apr 2025",
-      keywords: "#LangChain, #RAG, #Multimodal, #TTS",
-      description: `Developed an automated presentation system for individuals with presentation anxiety.
-Extracted text and images from presentation slides (PDF) and generated page-wise presentation scripts.
-Implemented TTS integration for fully automated presentation deliver.`,
+        id: "proj-1",
+        title: "Automated Presentation Generation System Using a Multimodal VLM-LLM-TTS Pipeline",
+        period: "Mar 2025 – Apr 2025",
+        keywords: "#LangChain, #RAG, #Multimodal, #TTS",
+        description: `Developed an automated presentation system for individuals with presentation anxiety.
+    Extracted text and images from presentation slides (PDF) and generated page-wise presentation scripts.
+    Implemented TTS integration for fully automated presentation deliver.`,
     },
     {
-      id: "proj-2",
-      title: "DACON: Construction Accident Prevention & Response Generation",
-      period: "Feb 2025 – Mar 2025",
-      keywords: "#LLM, #RAG, #Ollama",
-      description: `Participated in DACON Hansol Deco Season 3 Generative AI Competition.
-Built a RAG-based LLM system to analyze construction accident data, identify causes, and generate response messages by retrieving similar past cases.`,
+        id: "proj-2",
+        title: "Creating Construction Accident Prevention and Response Measures Using RAG",
+        period: "Feb 2025 – Mar 2025",
+        keywords: "#LLM, #RAG, #Ollama",
+        description: `Participated in DACON Hansol Deco Season 3 Generative AI Competition.
+    Built a RAG-based LLM system to analyze construction accident data, identify causes, and generate response messages by retrieving similar past cases.`,
     },
     {
-      id: "proj-3",
-      title: "Deep Print",
-      period: "Feb 2025 – Mar 2025",
-      keywords: "#ComputerVision, #LLM, #RAG, #Rule-based",
-      description: `Built an AI-powered psychological assessment system based on HTP (House–Tree–Person) drawings.
-Detected objects and analyzed visual attributes (size, position, composition) using CV techniques.
-Combined rule-based evaluation with LLM interpretation to generate automated psychological assessments.`,
+        id: "proj-3",
+        title: "Children's Drawings Using Object Detection and Natural Language Processing Models Psychological Analysis Assistance System",
+        period: "Feb 2025 – Mar 2025",
+        keywords: "#ComputerVision, #LLM, #RAG, #Rule-based",
+        description: `Built an AI-powered psychological assessment system based on HTP (House–Tree–Person) drawings.
+    Detected objects and analyzed visual attributes (size, position, composition) using CV techniques.
+    Combined rule-based evaluation with LLM interpretation to generate automated psychological assessments.`,
     },
     {
-      id: "proj-4",
-      title: "Predict_fire_forest",
-      period: "Jan 2025 – Feb 2025",
-      keywords: "#SpatialData, #DataMining, #MachineLearning",
-      description: `Predicted wildfire occurrence using ensemble learning techniques.
-Integrated meteorological data, population density, and agricultural land usage data to improve prediction accuracy.`,
+        id: "proj-4",
+        title: "Development of a Wildfire Prediction Model Using Machine Learning",
+        period: "Jan 2025 – Feb 2025",
+        keywords: "#SpatialData, #DataMining, #MachineLearning",
+        description: `Predicted wildfire occurrence using ensemble learning techniques.
+    Integrated meteorological data, population density, and agricultural land usage data to improve prediction accuracy.`,
     },
-  ];
+    ];
 
   return (
     <div
