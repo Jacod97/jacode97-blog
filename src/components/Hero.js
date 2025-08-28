@@ -35,8 +35,10 @@ export default function Hero() {
           Let me introduce myself
         </h2>
         <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-          저는 Civil Engineering과 AI/ML을 결합하여 스마트 모빌리티와 인프라 문제를 해결하는 것을 목표로 하고 있습니다.  
-          이 블로그에서는 저의 경험, 연구, 프로젝트를 공유합니다.
+          Hello, I’m Jae-sik Jung, an AI Engineer. I am based in Seoul, South Korea.
+          When I was younger, I have enjoyed mathematics, especially the process of solving problems and finding answers. As I grew older, I also became interested in subjects like mathematics, statistics, mechanics, and English.
+          Today, I place great value on continuous learning and growth, and I am always studying and improving myself. This mindset has driven me to keep exploring new knowledge and challenges in a rapidly changing industry, and eventually led me to the fascinating field of artificial intelligence.
+          I prefer focusing on the cause of a problem rather than just its solution. My goal is to fundamentally understand problems and create innovative solutions, growing into an AI professional who can make a meaningful impact.
         </p>
       </div>
     </section>
