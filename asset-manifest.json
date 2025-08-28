@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/jacode97-blog/static/css/main.f855e6bc.css",
-    "main.js": "/jacode97-blog/static/js/main.5de23ab2.js",
+    "main.js": "/jacode97-blog/static/js/main.c4688671.js",
     "static/js/453.1cc31462.chunk.js": "/jacode97-blog/static/js/453.1cc31462.chunk.js",
     "static/media/profile.jpg": "/jacode97-blog/static/media/profile.b015c9cc50e824c98aa4.jpg",
     "static/media/presentation1.png": "/jacode97-blog/static/media/presentation1.af6c6ad84ab51a4227be.png",
@@ -10,7 +10,7 @@
     "static/media/fire2-1.png": "/jacode97-blog/static/media/fire2-1.f8a06bdea1dec210f636.png",
     "static/media/fire2.png": "/jacode97-blog/static/media/fire2.5f047b423548dcfef5cd.png",
     "static/media/presentation3.png": "/jacode97-blog/static/media/presentation3.3ad69e78bf2f2e4a36c7.png",
-    "static/media/deepprint1.png": "/jacode97-blog/static/media/deepprint1.e05aae393bbecbeb60ad.png",
+    "static/media/deepprint1.png": "/jacode97-blog/static/media/deepprint1.c17deaeb73cf41f7e0f9.png",
     "static/media/fire5.png": "/jacode97-blog/static/media/fire5.7d3120a695016ea9298f.png",
     "static/media/fire6.png": "/jacode97-blog/static/media/fire6.9636778507e887cd64f9.png",
     "static/media/python.png": "/jacode97-blog/static/media/python.6a5cbc319ab3ddf8ef92.png",
@@ -25,11 +25,11 @@
     "static/media/react.png": "/jacode97-blog/static/media/react.98ff38735baa4c1b0381.png",
     "index.html": "/jacode97-blog/index.html",
     "main.f855e6bc.css.map": "/jacode97-blog/static/css/main.f855e6bc.css.map",
-    "main.5de23ab2.js.map": "/jacode97-blog/static/js/main.5de23ab2.js.map",
+    "main.c4688671.js.map": "/jacode97-blog/static/js/main.c4688671.js.map",
     "453.1cc31462.chunk.js.map": "/jacode97-blog/static/js/453.1cc31462.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.5de23ab2.js"
+    "static/js/main.c4688671.js"
   ]
 }
