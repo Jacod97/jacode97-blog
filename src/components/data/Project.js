@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PresentationAgent from "./view_details/PresentationAgent";
 // import ConstructionRAG from "./view_details/ConstructionRAG";
-// import DeepPrint from "./view_details/DeepPrint";
-// import PredictFire from "./view_details/PredictFire";
+import DeepPrint from "./view_details/DeepPrint";
+import PredictFire from "./view_details/Predict_fire";
 
 export default function Projects({ onClose = () => {} }) {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -52,8 +52,8 @@ Integrated meteorological data, population density, and agricultural land usage 
       return <PresentationAgent onClose={() => setSelectedProject(null)} />;
     }
     // if (selectedProject.id === "proj-2") return <ConstructionRAG onClose={() => setSelectedProject(null)} />;
-    // if (selectedProject.id === "proj-3") return <DeepPrint onClose={() => setSelectedProject(null)} />;
-    // if (selectedProject.id === "proj-4") return <PredictFire onClose={() => setSelectedProject(null)} />;
+    if (selectedProject.id === "proj-3") return <DeepPrint onClose={() => setSelectedProject(null)} />;
+    if (selectedProject.id === "proj-4") return <PredictFire onClose={() => setSelectedProject(null)} />;
   }
 
   return (
