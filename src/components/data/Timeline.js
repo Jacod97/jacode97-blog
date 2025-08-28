@@ -57,7 +57,7 @@ export default function Timeline({ onClose }) {
       }}
       role="button"
       tabIndex={0}
-      onClick={onClose}                     // 배경 클릭 시 닫기
+      onClick={onClose}
       onKeyDown={(e) => e.key === "Enter" && onClose()}
     >
       <div
@@ -65,19 +65,22 @@ export default function Timeline({ onClose }) {
           background: "white",
           padding: "2rem",
           borderRadius: "12px",
-          width: "70%",
+          width: "80%",
           maxHeight: "80vh",
           overflowY: "auto",
+          position: "relative",
           boxShadow: "0 8px 16px rgba(0,0,0,0.2)"
         }}
-        onClick={(e) => e.stopPropagation()} // 내부 클릭 시 닫힘 방지
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Close (X) Button */}
+        {/* Close (X) */}
         <button
           type="button"
           onClick={onClose}
           style={{
-            float: "right",
+            position: "absolute",
+            right: "1rem",
+            top: "1rem",
             border: "none",
             background: "transparent",
             fontSize: "1.2rem",
@@ -87,93 +90,112 @@ export default function Timeline({ onClose }) {
           ✖
         </button>
 
-        {/* Education */}
-        <h2 style={{ marginBottom: "1.5rem" }}>Education</h2>
+        {/* Timeline Container */}
         <div
           style={{
             position: "relative",
-            marginLeft: "1rem",
-            paddingLeft: "2rem",
-            borderLeft: "3px solid #0077b6"
+            margin: "2rem auto",
+            padding: "2rem 0",
+            width: "90%"
           }}
         >
+          {/* Vertical Center Line */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              bottom: 0,
+              left: "50%",
+              width: "3px",
+              background: "#ccc",
+              transform: "translateX(-50%)"
+            }}
+          />
+
+          {/* Education */}
           {timelineData.education.map((item) => (
-            <div key={`${item.title}-${item.year}`} style={{ marginBottom: "2rem", position: "relative" }}>
+            <div
+              key={`${item.title}-${item.year}`}
+              style={{
+                position: "relative",
+                width: "50%",
+                padding: "1rem",
+                textAlign: "right",
+                left: 0
+              }}
+            >
               {/* Dot */}
               <span
                 style={{
                   position: "absolute",
-                  left: "-13px",
-                  top: "6px",
-                  width: "16px",
-                  height: "16px",
+                  top: "20px",
+                  right: "-10px",
+                  width: "20px",
+                  height: "20px",
                   background: "#0077b6",
                   borderRadius: "50%",
                   border: "3px solid white",
                   boxShadow: "0 0 0 2px #0077b6"
                 }}
               />
-              {/* Content */}
               <div
                 style={{
-                  background: "white",
+                  background: "#f9fcff",
                   padding: "1rem",
                   borderRadius: "8px",
                   boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
                 }}
               >
-                <h3 style={{ margin: "0 0 0.3rem" }}>{item.year}</h3>
-                <h4 style={{ margin: "0 0 0.5rem", color: "#0077b6" }}>{item.title}</h4>
+                <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
+                <h4 style={{ margin: "0 0 0.5rem", color: "#0077b6" }}>{item.year}</h4>
                 <p style={{ margin: 0 }}>{item.description}</p>
               </div>
             </div>
           ))}
-        </div>
 
-        {/* Professional */}
-        <h2 style={{ margin: "2rem 0 1.5rem" }}>Professional</h2>
-        <div
-          style={{
-            position: "relative",
-            marginLeft: "1rem",
-            paddingLeft: "2rem",
-            borderLeft: "3px solid #ff6b6b"
-          }}
-        >
+          {/* Professional */}
           {timelineData.professional.map((item) => (
-            <div key={`${item.title}-${item.year}`} style={{ marginBottom: "2rem", position: "relative" }}>
+            <div
+              key={`${item.title}-${item.year}`}
+              style={{
+                position: "relative",
+                width: "50%",
+                padding: "1rem",
+                textAlign: "left",
+                left: "50%"
+              }}
+            >
               {/* Dot */}
               <span
                 style={{
                   position: "absolute",
-                  left: "-13px",
-                  top: "6px",
-                  width: "16px",
-                  height: "16px",
+                  top: "20px",
+                  left: "-10px",
+                  width: "20px",
+                  height: "20px",
                   background: "#ff6b6b",
                   borderRadius: "50%",
                   border: "3px solid white",
                   boxShadow: "0 0 0 2px #ff6b6b"
                 }}
               />
-              {/* Content */}
               <div
                 style={{
-                  background: "white",
+                  background: "#fff8f8",
                   padding: "1rem",
                   borderRadius: "8px",
                   boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
                 }}
               >
-                <h3 style={{ margin: "0 0 0.3rem" }}>{item.year}</h3>
-                <h4 style={{ margin: "0 0 0.5rem", color: "#ff6b6b" }}>{item.title}</h4>
+                <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
+                <h4 style={{ margin: "0 0 0.5rem", color: "#ff6b6b" }}>{item.year}</h4>
                 <p style={{ margin: 0 }}>{item.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Close Button */}
+        {/* Bottom Close */}
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <button
             type="button"
