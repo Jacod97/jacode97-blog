@@ -155,18 +155,15 @@ export default function Timeline({ onClose }) {
                     background: bgColor,
                     padding: "1rem",
                     borderRadius: "8px",
-                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                    whiteSpace: "pre-line" // 줄바꿈 적용
                   }}
                 >
                   <h3 style={{ margin: "0 0 0.3rem" }}>{item.title}</h3>
                   <h4 style={{ margin: "0 0 0.5rem", color }}>{item.year}</h4>
-                  <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
-                    {item.description.map((desc) => (
-                      <li key={desc} style={{ marginBottom: "0.3rem" }}>
-                        {desc}
-                      </li>
-                    ))}
-                  </ul>
+                  <p style={{ margin: 0 }}>
+                    {item.description.join("\n")}
+                  </p>
                 </div>
               </div>
             );

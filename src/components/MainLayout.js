@@ -2,6 +2,7 @@ import { useState } from "react";
 import ChatBox from "./ChatBox";
 import Profile from "./data/Profile";
 import Timeline from "./data/Timeline"; 
+import Projects from "./data/Project"; 
 
 const cardStyle = {
   background: "white",
@@ -76,6 +77,7 @@ export default function MainLayout() {
       {/* Modal Rendering */}
       {activeModal === "profile" && <Profile onClose={() => setActiveModal(null)} />}
       {activeModal === "timeline" && <Timeline onClose={() => setActiveModal(null)} />}
+      {activeModal === "project" && <Projects onClose={() => setActiveModal(null)} />}  
     </section>
   );
 }
