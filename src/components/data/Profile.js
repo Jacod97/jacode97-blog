@@ -1,15 +1,3 @@
-import pythonIcon from "../../assets/python.png";
-import pytorchIcon from "../../assets/PyTorch.png";
-import sklearnIcon from "../../assets/scikit-learn.png";
-import fastapiIcon from "../../assets/FastAPI.png";
-import langchainIcon from "../../assets/langchain.png";
-import opencvIcon from "../../assets/OpenCV.png";
-import linuxIcon from "../../assets/Linux.png";
-import sqliteIcon from "../../assets/SQLite.png";
-import githubIcon from "../../assets/GitHub.png";
-import reactIcon from "../../assets/React.png";
-import postgresqlIcon from "../../assets/PostgresSQL.png";
-
 export default function Profile({ onClose = () => {} }) {
   const profile = {
     email: "jacode6894@gmail.com",
@@ -24,17 +12,17 @@ export default function Profile({ onClose = () => {} }) {
       "Effective communication and collaboration skills with various stakeholders"
     ],
     skills: [
-      { name: "Python", icon: pythonIcon },
-      { name: "PyTorch", icon: pytorchIcon },
-      { name: "scikit-learn", icon: sklearnIcon },
-      { name: "FastAPI", icon: fastapiIcon },
-      { name: "LangChain", icon: langchainIcon },
-      { name: "OpenCV", icon: opencvIcon },
-      { name: "Linux", icon: linuxIcon },
-      { name: "SQLite", icon: sqliteIcon },
-      { name: "GitHub", icon: githubIcon },
-      { name: "React", icon: reactIcon },
-      { name: "PostgreSQL", icon: postgresqlIcon },
+      { name: "Python", icon: "/assets/python.png" },
+      { name: "PyTorch", icon: "/assets/pytorch.png" },
+      { name: "scikit-learn", icon: "/assets/scikit-learn.png" },
+      { name: "FastAPI", icon: "/assets/fastapi.png" },
+      { name: "LangChain", icon: "/assets/langchain.png" },
+      { name: "OpenCV", icon: "/assets/opencv.png" },
+      { name: "Linux", icon: "/assets/linux.png" },
+      { name: "SQLite", icon: "/assets/sqlite.png" },
+      { name: "GitHub", icon: "/assets/github.png" },
+      { name: "React", icon: "/assets/react.png" },
+      { name: "PostgreSQL", icon: "/assets/postgresql.png" },
     ]
   };
 
@@ -69,12 +57,12 @@ export default function Profile({ onClose = () => {} }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 1. Title */}
+        {/* Title */}
         <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1.5rem" }}>
           Profile
         </h1>
 
-        {/* 2. Contact */}
+        {/* Contact */}
         <h3>Email</h3>
         <p>{profile.email}</p>
 
@@ -92,7 +80,7 @@ export default function Profile({ onClose = () => {} }) {
           </a>
         </p>
 
-        {/* 3. Abilities */}
+        {/* Abilities */}
         <h3 style={{ marginTop: "1.5rem" }}>Abilities</h3>
         <ul>
           {profile.abilities.map((item) => (
@@ -100,7 +88,7 @@ export default function Profile({ onClose = () => {} }) {
           ))}
         </ul>
 
-        {/* 4. Skills */}
+        {/* Skills */}
         <h3 style={{ marginTop: "1.5rem" }}>Skills</h3>
         <div
           style={{
@@ -126,10 +114,10 @@ export default function Profile({ onClose = () => {} }) {
                   height: "70px",
                   borderRadius: "50%",
                   border: "2px solid #ddd",
+                  background: "white",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  background: "white",
                   overflow: "hidden",
                   boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
                 }}
@@ -137,7 +125,7 @@ export default function Profile({ onClose = () => {} }) {
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  style={{ width: "60%", height: "60%", objectFit: "contain" }}
+                  style={{ width: "70%", height: "70%", objectFit: "contain" }}
                 />
               </div>
               <span style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
