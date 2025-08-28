@@ -190,8 +190,7 @@ export default function PresentationAgent({ onClose }) {
               script. The generated script and synthesized speech are combined to
               provide the presenter with final presentation materials ready for
               immediate use.
-            </p>
-            <p>
+
               The lower section, referred to as the chatbot architecture, stores the
               entire presentation content in a VectorDB and provides real-time answers
               to audience questions raised during the presentation. When a query is
@@ -223,15 +222,13 @@ export default function PresentationAgent({ onClose }) {
           contextual consistency and readability were improved. At the TTS stage, SSML
           tags were applied to key terms to assign intonation and emphasis, increasing
           audience engagement and allowing critical points to be easily understood.
-        </p>
-        <p>
+
           The system was designed not only to shorten preparation time prior to
           presentations but also to enable real-time responses to audience questions
           through a VectorDB-based Q&amp;A chatbot during the presentation. This allowed
           presenters to focus on content organization and audience interaction, thereby
           achieving a more efficient and professional presentation environment.
-        </p>
-        <p>
+
           Nevertheless, limitations remain in terms of token overflow. Although partially
           addressed, lengthy presentation materials with numerous slides still pose
           challenges. In particular, during the script generation process that requires
@@ -239,16 +236,14 @@ export default function PresentationAgent({ onClose }) {
           potential omission of slides or abnormal outputs. While strategies such as
           slide-level segmentation and summarization were employed to mitigate these
           issues, further token optimization is required for processing long documents.
-        </p>
-        <p>
+
           Moreover, the current system depends on external APIs such as GPT and Google
           Cloud, which introduces constraints regarding security and independence.
           Service quality may also be affected by the reliability or usage limitations of
           these APIs. In actual prototype demonstrations, performance degradation was
           observed when the GPT model’s image transformation functionality failed,
           underscoring the need for alternatives to ensure system consistency.
-        </p>
-        <p>
+
           Future work will involve transitioning away from external API-based
           architectures toward locally operable models to enhance security and stability.
           Additionally, fine-tuned LLM and TTS models tailored to presentation script
