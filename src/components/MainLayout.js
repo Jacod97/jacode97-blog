@@ -17,27 +17,32 @@ export default function MainLayout() {
   return (
     <section style={{ display: "flex", gap: "2rem", padding: "2rem" }}>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        {/* Profile */}
         <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("profile")}>
           <h2>Profile</h2>
-          <p>간단한 자기소개 미리보기...</p>
+          <p>Get to know me better here!</p>
         </button>
 
+        {/* Timeline */}
         <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("experience")}>
-          <h2>Experience</h2>
-          <p>짧은 경력 요약...</p>
+          <h2>Timeline</h2>
+          <p>Take a look at my journey through school and work!</p>
         </button>
 
+        {/* Projects */}
         <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("project")}>
-          <h2>Project</h2>
-          <p>프로젝트 간단 소개...</p>
+          <h2>Projects</h2>
+          <p>Check out my side projects and professional work!</p>
         </button>
 
+        {/* Q&A */}
         <button type="button" style={{ ...cardStyle, border: "none" }} onClick={() => setActiveModal("qa")}>
           <h2>Q&A about myself</h2>
-          <p>자주 묻는 질문 요약...</p>
+          <p>Curious about me? Here are some quick answers!</p>
         </button>
       </div>
 
+      {/* ChatBot 영역 */}
       <div style={{ flex: "0 0 400px", height: "600px", background: "#f9f9f9", borderRadius: "10px", padding: "1rem" }}>
         <h2 style={{ textAlign: "center" }}>ChatBot</h2>
         <ChatBox />
