@@ -1,9 +1,12 @@
 {
   "files": {
     "main.css": "/jacode97-blog/static/css/main.f855e6bc.css",
-    "main.js": "/jacode97-blog/static/js/main.74a1b3a2.js",
+    "main.js": "/jacode97-blog/static/js/main.30fbc205.js",
     "static/js/453.1cc31462.chunk.js": "/jacode97-blog/static/js/453.1cc31462.chunk.js",
     "static/media/profile.jpg": "/jacode97-blog/static/media/profile.b015c9cc50e824c98aa4.jpg",
+    "static/media/presentation1.png": "/jacode97-blog/static/media/presentation1.af6c6ad84ab51a4227be.png",
+    "static/media/presentation2.png": "/jacode97-blog/static/media/presentation2.54d10b2d88923ada6319.png",
+    "static/media/presentation3.png": "/jacode97-blog/static/media/presentation3.3ad69e78bf2f2e4a36c7.png",
     "static/media/python.png": "/jacode97-blog/static/media/python.6a5cbc319ab3ddf8ef92.png",
     "static/media/linux.png": "/jacode97-blog/static/media/linux.30b87c36aaec73885fd2.png",
     "static/media/langchain.png": "/jacode97-blog/static/media/langchain.113f7d44de6f0c69d162.png",
@@ -14,11 +17,11 @@
     "static/media/react.png": "/jacode97-blog/static/media/react.98ff38735baa4c1b0381.png",
     "index.html": "/jacode97-blog/index.html",
     "main.f855e6bc.css.map": "/jacode97-blog/static/css/main.f855e6bc.css.map",
-    "main.74a1b3a2.js.map": "/jacode97-blog/static/js/main.74a1b3a2.js.map",
+    "main.30fbc205.js.map": "/jacode97-blog/static/js/main.30fbc205.js.map",
     "453.1cc31462.chunk.js.map": "/jacode97-blog/static/js/453.1cc31462.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.74a1b3a2.js"
+    "static/js/main.30fbc205.js"
   ]
 }
