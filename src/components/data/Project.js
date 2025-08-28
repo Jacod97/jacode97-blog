@@ -62,32 +62,48 @@ export default function Projects({ onClose = () => {} }) {
       <div
         style={{
           background: "white",
-          padding: "1.5rem",
-          borderRadius: "10px",
-          width: "700px",
+          padding: "1.8rem",
+          borderRadius: "12px",
+          width: "75%", // 프로젝트 박스 가로 조금 늘림
           maxHeight: "80vh",
           overflowY: "auto",
-          boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
-          textAlign: "left", // 전체 좌측 정렬
+          boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+          textAlign: "left",
+          position: "relative",
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 style={{ textAlign: "left" }}>Projects</h2>
+        {/* Close (X) */}
+        <button
+          type="button"
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            right: "1rem",
+            top: "1rem",
+            border: "none",
+            background: "transparent",
+            fontSize: "1.2rem",
+            cursor: "pointer",
+          }}
+        >
+          ✖
+        </button>
+
+        <h2 style={{ marginBottom: "1rem" }}>Projects</h2>
         <ul style={{ paddingLeft: "1rem", textAlign: "left" }}>
           {projectList.map((p) => (
-            <li key={p.id} style={{ marginBottom: "1.5rem", textAlign: "left" }}>
-              <h3 style={{ textAlign: "left" }}>
+            <li key={p.id} style={{ marginBottom: "1.5rem" }}>
+              <h3>
                 {p.title}{" "}
                 <span style={{ fontSize: "0.9rem", color: "gray" }}>
                   ({p.period})
                 </span>
               </h3>
-              <p style={{ textAlign: "left" }}>
+              <p>
                 <b>Keywords:</b> {p.keywords}
               </p>
-              <p style={{ whiteSpace: "pre-line", textAlign: "left" }}>
-                {p.description}
-              </p>
+              <p style={{ whiteSpace: "pre-line" }}>{p.description}</p>
 
               {/* View Details Button */}
               <button
@@ -110,23 +126,24 @@ export default function Projects({ onClose = () => {} }) {
           ))}
         </ul>
 
-        {/* Close Button */}
-        <button
-          type="button"
-          onClick={onClose}
-          style={{
-            marginTop: "1.5rem",
-            padding: "0.5rem 1rem",
-            border: "none",
-            borderRadius: "5px",
-            background: "#007bff",
-            color: "white",
-            cursor: "pointer",
-            fontSize: "0.95rem",
-          }}
-        >
-          Close
-        </button>
+        {/* Bottom Close */}
+        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+          <button
+            type="button"
+            onClick={onClose}
+            style={{
+              padding: "0.6rem 1.2rem",
+              border: "none",
+              borderRadius: "6px",
+              background: "#007bff",
+              color: "white",
+              cursor: "pointer",
+              fontSize: "1rem",
+            }}
+          >
+            Close
+          </button>
+        </div>
 
         {/* Details Modal */}
         {selectedProject && (
@@ -148,16 +165,34 @@ export default function Projects({ onClose = () => {} }) {
             <div
               style={{
                 background: "white",
-                padding: "1.5rem",
-                borderRadius: "10px",
-                width: "600px",
-                maxHeight: "70vh",
+                padding: "2rem",
+                borderRadius: "12px",
+                width: "80%", // Timeline과 같은 크기
+                maxHeight: "80vh",
                 overflowY: "auto",
-                boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
-                textAlign: "left", // 상세 모달도 좌측 정렬
+                boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+                textAlign: "left",
+                position: "relative",
               }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close (X) */}
+              <button
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                style={{
+                  position: "absolute",
+                  right: "1rem",
+                  top: "1rem",
+                  border: "none",
+                  background: "transparent",
+                  fontSize: "1.2rem",
+                  cursor: "pointer",
+                }}
+              >
+                ✖
+              </button>
+
               <h3>{selectedProject.title}</h3>
               <p style={{ color: "gray" }}>{selectedProject.period}</p>
 
@@ -174,22 +209,24 @@ export default function Projects({ onClose = () => {} }) {
                 (Details will be added here later)
               </div>
 
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                style={{
-                  marginTop: "1rem",
-                  padding: "0.5rem 1rem",
-                  border: "none",
-                  borderRadius: "5px",
-                  background: "#007bff",
-                  color: "white",
-                  cursor: "pointer",
-                  fontSize: "0.95rem",
-                }}
-              >
-                Close
-              </button>
+              {/* Bottom Close */}
+              <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  style={{
+                    padding: "0.6rem 1.2rem",
+                    border: "none",
+                    borderRadius: "6px",
+                    background: "#007bff",
+                    color: "white",
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                  }}
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         )}
