@@ -15,7 +15,7 @@ export default function Hero() {
       <div>
         {/* public/assets/profile.jpg 에 있는 이미지 불러오기 */}
         <img
-          src="/assets/profile.jpg"       // public 폴더 기준으로 접근 가능 (/assets/profile.jpg)
+          src="/profile.jpg"       // public 폴더 기준으로 접근 가능 (/assets/profile.jpg)
           alt="My Profile"                // 이미지 대체 텍스트 (스크린리더 접근성용)
           style={{
             width: "250px",               // 이미지 가로 크기 250px
