@@ -121,6 +121,16 @@ export default function PresentationAgent({ onClose }) {
               language descriptions and combined with the text of the page to be
               provided as input to the LLM.
             </p>
+
+            <img
+              src={presentation1}
+              alt="Interpretation Logic"
+              style={{ maxWidth: "300px", height: "auto", display: "block", margin: "1rem auto" }}
+            />
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Figure 1] Image Interpretation Logic
+            </p>     
+
             <p>
               During the script generation process, it was observed that the LLM
               frequently repeated identical greetings or produced monotonous sentences.
@@ -140,16 +150,15 @@ export default function PresentationAgent({ onClose }) {
               the automatically generated scripts and then produce final presentation
               audio based on the revised content.
             </p>
-            <img
-              src={presentation1}
-              alt="Script Generation Logic"
-              style={{ maxWidth: "300px", height: "auto", margin: "1rem 0" }}
-            />
+
             <img
               src={presentation2}
               alt="Script Generation UI"
-              style={{ maxWidth: "300px", height: "auto", margin: "1rem 0" }}
+              style={{ maxWidth: "450px", height: "auto", display: "block", margin: "1rem auto" }}
             />
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Figure 2] Script Generation UI
+            </p>
           </li>
 
           <li>
@@ -197,8 +206,11 @@ export default function PresentationAgent({ onClose }) {
             <img
               src={presentation3}
               alt="System Architecture"
-              style={{ maxWidth: "300px", height: "auto", margin: "1rem 0" }}
+              style={{ maxWidth: "600px", height: "auto", display: "block", margin: "1rem auto" }}
             />
+            <p style={{ textAlign: "center", fontSize: "0.9rem", color: "gray" }}>
+              [Figure 3] System Architecture
+            </p>
           </li>
         </ol>
 
