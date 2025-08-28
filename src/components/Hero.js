@@ -14,7 +14,7 @@ export default function Hero() {
       <div>
         {/* public 폴더에 profile.jpg 넣었다고 가정 */}
         <img
-          src="../../assets/profile.jpg"
+          src="/assets/profile.jpg"
           alt="My Profile"
           style={{
             width: "250px",
