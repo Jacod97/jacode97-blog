@@ -12,18 +12,17 @@ export default function Profile({ onClose = () => {} }) {
       "Effective communication and collaboration skills with various stakeholders"
     ],
     skills: [
-      { name: "Python", icon: "🐍" },
-      { name: "PyTorch", icon: "🔥" },
-      { name: "scikit-learn", icon: "📊" },
-      { name: "FastAPI", icon: "⚡" },
-      { name: "OpenCV", icon: "👁️" },
-      { name: "PostgreSQL", icon: "🐘" },
-      { name: "PostGIS", icon: "🗺️" },
-      { name: "SQLite", icon: "💾" },
-      { name: "Git", icon: "🌱" },
-      { name: "QGIS", icon: "🛰️" },
-      { name: "ArcGIS", icon: "🗺️" },
-      { name: "Linux", icon: "🐧" }
+      { name: "Python", icon: "/assets/python.png" },
+      { name: "PyTorch", icon: "/assets/pytorch.png" },
+      { name: "scikit-learn", icon: "/assets/scikitlearn.png" },
+      { name: "FastAPI", icon: "/assets/fastapi.png" },
+      { name: "LangChain", icon: "/assets/langchain.png" },
+      { name: "OpenCV", icon: "/assets/opencv.png" },
+      { name: "Linux", icon: "/assets/linux.png" },
+      { name: "SQLite", icon: "/assets/sqlite.png" },
+      { name: "GitHub", icon: "/assets/github.png" },
+      { name: "React", icon: "/assets/react.png" },
+      { name: "PostgreSQL", icon: "/assets/postgresql.png" }
     ]
   };
 
@@ -93,28 +92,46 @@ export default function Profile({ onClose = () => {} }) {
         <h3 style={{ marginTop: "1.5rem" }}>Skills</h3>
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.75rem",
-            marginTop: "0.5rem"
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))",
+            gap: "1rem",
+            marginTop: "1rem",
           }}
         >
           {profile.skills.map((skill) => (
-            <span
+            <div
               key={skill.name}
               style={{
-                display: "inline-flex",
+                display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.4rem 0.8rem",
-                border: "1px solid #ddd",
-                borderRadius: "20px",
-                background: "#f9f9f9",
-                fontSize: "0.95rem"
+                textAlign: "center",
               }}
             >
-              <span>{skill.icon}</span> {skill.name}
-            </span>
+              <div
+                style={{
+                  width: "70px",
+                  height: "70px",
+                  borderRadius: "50%",
+                  border: "2px solid #ddd",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: "white",
+                  overflow: "hidden",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
+                }}
+              >
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  style={{ width: "60%", height: "60%", objectFit: "contain" }}
+                />
+              </div>
+              <span style={{ marginTop: "0.5rem", fontSize: "0.85rem" }}>
+                {skill.name}
+              </span>
+            </div>
           ))}
         </div>
 
