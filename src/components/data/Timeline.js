@@ -23,6 +23,12 @@ const timelineData = [
     ]
   },
   {
+    year: "Dec 2024 – May 2025",
+    type: "education",
+    title: "Wanted Lab (Seoul, South Korea)",
+    description: ["\"PotenUP Data AI Developer Training Program\" Completed"]
+  },
+  {
     year: "May 2025 – Jul 2025",
     type: "professional",
     title: "R&D Intern, WisePlus (Seoul, South Korea)",
@@ -38,12 +44,6 @@ const timelineData = [
     description: [
       "Developing projects that integrate Digital Twin and AI technologies."
     ]
-  },
-  {
-    year: "Dec 2024 – Jun 2025",
-    type: "education",
-    title: "Wanted Lab (Seoul, South Korea)",
-    description: ["\"PotenUP Data AI Developer Training Program\" Completed"]
   }
 ];
 
@@ -120,7 +120,7 @@ export default function Timeline({ onClose }) {
           />
 
           {timelineData.map((item, idx) => {
-            const isLeft = idx % 2 === 0; // 짝수: 왼쪽, 홀수: 오른쪽
+            const isLeft = idx % 2 === 0; // 좌우 교차
             const color = item.type === "education" ? "#0077b6" : "#ff6b6b";
             const bgColor = item.type === "education" ? "#f9fcff" : "#fff8f8";
 
