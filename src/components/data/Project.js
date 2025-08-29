@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PresentationAgent from "./view_details/PresentationAgent";
-// import ConstructionRAG from "./view_details/ConstructionRAG";
+import ConstructionRAG from "./view_details/ConstructionRAG";
 import DeepPrint from "./view_details/DeepPrint";
 import PredictFire from "./view_details/Predict_fire";
 
@@ -13,6 +13,7 @@ export default function Projects({ onClose = () => {} }) {
       title:
         "Automated Presentation Generation System Using a Multimodal VLM-LLM-TTS Pipeline",
       period: "Mar 2025 – Apr 2025",
+      category: "Side Project",
       keywords: "#LangChain, #RAG, #Multimodal, #TTS",
       description: `Developed an automated presentation system for individuals with presentation anxiety.
 Extracted text and images from presentation slides (PDF) and generated page-wise presentation scripts.
@@ -22,6 +23,7 @@ Implemented TTS integration for fully automated presentation deliver.`,
       id: "proj-2",
       title: "Creating Construction Accident Prevention and Response Measures Using RAG",
       period: "Feb 2025 – Mar 2025",
+      category: "Competition",
       keywords: "#LLM, #RAG, #Ollama",
       description: `Participated in DACON Hansol Deco Season 3 Generative AI Competition.
 Built a RAG-based LLM system to analyze construction accident data, identify causes, and generate response messages by retrieving similar past cases.`,
@@ -31,6 +33,7 @@ Built a RAG-based LLM system to analyze construction accident data, identify cau
       title:
         "Children's Drawings Using Object Detection and Natural Language Processing Models Psychological Analysis Assistance System",
       period: "Feb 2025 – Mar 2025",
+      category: "Side Project",
       keywords: "#ComputerVision, #LLM, #RAG, #Rule-based",
       description: `Built an AI-powered psychological assessment system based on HTP (House–Tree–Person) drawings.
 Detected objects and analyzed visual attributes (size, position, composition) using CV techniques.
@@ -40,20 +43,23 @@ Combined rule-based evaluation with LLM interpretation to generate automated psy
       id: "proj-4",
       title: "Development of a Wildfire Prediction Model Using Machine Learning",
       period: "Jan 2025 – Feb 2025",
+      category: "Side Project",
       keywords: "#SpatialData, #DataMining, #MachineLearning",
       description: `Predicted wildfire occurrence using ensemble learning techniques.
 Integrated meteorological data, population density, and agricultural land usage data to improve prediction accuracy.`,
     },
   ];
 
-  // selectedProject 있으면 바로 해당 컴포넌트 렌더링
+  // 선택된 프로젝트 있으면 바로 상세 컴포넌트 보여주기
   if (selectedProject) {
-    if (selectedProject.id === "proj-1") {
+    if (selectedProject.id === "proj-1")
       return <PresentationAgent onClose={() => setSelectedProject(null)} />;
-    }
-    // if (selectedProject.id === "proj-2") return <ConstructionRAG onClose={() => setSelectedProject(null)} />;
-    if (selectedProject.id === "proj-3") return <DeepPrint onClose={() => setSelectedProject(null)} />;
-    if (selectedProject.id === "proj-4") return <PredictFire onClose={() => setSelectedProject(null)} />;
+    if (selectedProject.id === "proj-2")
+      return <ConstructionRAG onClose={() => setSelectedProject(null)} />;
+    if (selectedProject.id === "proj-3")
+      return <DeepPrint onClose={() => setSelectedProject(null)} />;
+    if (selectedProject.id === "proj-4")
+      return <PredictFire onClose={() => setSelectedProject(null)} />;
   }
 
   return (
@@ -107,37 +113,87 @@ Integrated meteorological data, population density, and agricultural land usage 
         </button>
 
         <h2 style={{ marginBottom: "1rem" }}>Projects</h2>
-        <ul style={{ paddingLeft: "1rem", textAlign: "left" }}>
-          {projectList.map((p) => (
-            <li key={p.id} style={{ marginBottom: "1.5rem" }}>
-              <h3>
-                {p.title}{" "}
-                <span style={{ fontSize: "0.9rem", color: "gray" }}>
-                  ({p.period})
-                </span>
-              </h3>
-              <p>
-                <b>Keywords:</b> {p.keywords}
-              </p>
-              <p style={{ whiteSpace: "pre-line" }}>{p.description}</p>
 
-              {/* View Details Button */}
-              <button
-                type="button"
-                onClick={() => setSelectedProject(p)}
+        {/* 리스트 출력 (논문 검색결과 스타일) */}
+        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {projectList.map((p) => (
+            <li
+              key={p.id}
+              style={{
+                borderBottom: "1px solid #ddd",
+                padding: "1rem 0",
+              }}
+            >
+              {/* 구분 + 기간 */}
+              <div
                 style={{
-                  marginTop: "0.5rem",
-                  padding: "0.4rem 0.8rem",
-                  border: "1px solid #007bff",
-                  borderRadius: "5px",
-                  background: "white",
-                  color: "#007bff",
-                  cursor: "pointer",
-                  fontSize: "0.85rem",
+                  fontSize: "0.9rem",
+                  color: "gray",
+                  marginBottom: "0.3rem",
                 }}
               >
-                View Details
-              </button>
+                [{p.category}] {p.period}
+              </div>
+
+              {/* 제목 */}
+              <h3
+                style={{
+                  margin: "0 0 0.3rem",
+                  fontSize: "1.1rem",
+                  color: "#004080",
+                }}
+              >
+                {p.title}
+              </h3>
+
+              {/* 키워드 태그 */}
+              <div style={{ marginBottom: "0.5rem" }}>
+                {p.keywords.split(",").map((kw) => (
+                  <span
+                    key={kw}
+                    style={{
+                      background: "#f0f7ff",
+                      color: "#007bff",
+                      padding: "0.2rem 0.5rem",
+                      borderRadius: "4px",
+                      marginRight: "0.4rem",
+                      fontSize: "0.8rem",
+                    }}
+                  >
+                    {kw.trim()}
+                  </span>
+                ))}
+              </div>
+
+              {/* 설명 */}
+              <p
+                style={{
+                  margin: "0.5rem 0",
+                  whiteSpace: "pre-line",
+                  fontSize: "0.9rem",
+                }}
+              >
+                {p.description}
+              </p>
+
+              {/* 버튼 */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(p)}
+                  style={{
+                    padding: "0.4rem 0.8rem",
+                    border: "1px solid #007bff",
+                    borderRadius: "5px",
+                    background: "white",
+                    color: "#007bff",
+                    cursor: "pointer",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  View Details
+                </button>
+              </div>
             </li>
           ))}
         </ul>
