@@ -74,17 +74,25 @@ export default function ConstructionRAG({ onClose }) {
           This ensured contextual fidelity for each accident record.
         </p>
 
-        <pre>
-          <code className="language-python">{`
-construction_fill_values = {
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`construction_fill_values = {
     "TRAIN_02856": "Architecture > Finishing work",
     "TRAIN_13708": "Civil > Earthwork",
     # ...
 }
 
 for record_id, value in construction_fill_values.items():
-    train.loc[train["ID"] == record_id, "construction_type"] = value
-          `}</code>
+    train.loc[train["ID"] == record_id, "construction_type"] = value`}
         </pre>
 
         <p>
@@ -94,12 +102,20 @@ for record_id, value in construction_fill_values.items():
           conventional missing-value handling was applied, assigning default values to avoid errors in text-model inputs:
         </p>
 
-        <pre>
-          <code className="language-python">{`
-train["personal_accident"].fillna("None", inplace=True)
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`train["personal_accident"].fillna("None", inplace=True)
 train["material_accident"].fillna("None", inplace=True)
-train["cause_of_accident"].fillna("Other", inplace=True)
-          `}</code>
+train["cause_of_accident"].fillna("Other", inplace=True)`}
         </pre>
 
         <h4>Accident Report Preprocessing and Metadata Classification</h4>
@@ -108,6 +124,7 @@ train["cause_of_accident"].fillna("Other", inplace=True)
           <li>Introduced dynamic keyword-based filters to enhance retrieval accuracy for context-specific questions.</li>
         </ul>
 
+        {/* 메타데이터 테이블 */}
         <table
           style={{
             width: "100%",
@@ -127,16 +144,12 @@ train["cause_of_accident"].fillna("Other", inplace=True)
             <tr>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Architecture</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                Building, construction site, construction machine, contractor
-              </td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Building, construction site, contractor</td>
             </tr>
             <tr>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Civil</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                Bridge, tunnel, road, railway, port, river
-              </td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Bridge, tunnel, road, railway</td>
             </tr>
             <tr>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
@@ -146,9 +159,7 @@ train["cause_of_accident"].fillna("Other", inplace=True)
             <tr>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Facility</td>
-              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
-                Facility, plant, system, machinery
-              </td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Facility, plant, machinery</td>
             </tr>
             <tr>
               <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
@@ -159,14 +170,18 @@ train["cause_of_accident"].fillna("Other", inplace=True)
         </table>
 
         <h4>RAG-based Retrieval System</h4>
-        <ul>
-          <li>Implemented a LangChain vector retrieval pipeline with metadata filters to improve relevance of retrieved accident cases.</li>
-          <li>Ensured contextual reliability by extracting cases matching the query’s semantic context.</li>
-        </ul>
-
-        <pre>
-          <code className="language-python">{`
-rag_chain = (
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`rag_chain = (
     {
         'context': lambda inputs: "\\n\\n".join([
             res['section'] for res in search_similar_sections(
@@ -179,34 +194,39 @@ rag_chain = (
     | prompt 
     | llm
     | StrOutputParser()
-)
-          `}</code>
+)`}
         </pre>
 
         <h4>FAISS Vector Store and GPU Embedding</h4>
-        <ul>
-          <li>Embedded documents using <code>jhgan/ko-sbert-sts</code> and stored them in FAISS.</li>
-          <li>Batch encoding with GPU acceleration enabled fast processing of thousands of documents.</li>
-        </ul>
-
-        <pre>
-          <code className="language-python">{`
-model = SentenceTransformer("jhgan/ko-sbert-sts").to(device)
-embeddings = model.encode(batch, device=device)
-          `}</code>
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`model = SentenceTransformer("jhgan/ko-sbert-sts").to(device)
+embeddings = model.encode(batch, device=device)`}
         </pre>
 
-        <h4>Ollama-based Gemma3 Model for Response Generation</h4>
-        <ul>
-          <li>Generated concise response sentences with the Gemma3 model, using similar accident cases as context.</li>
-          <li>Controlled token length (≤100), formatting, and removed unnecessary modifiers to align with evaluation standards.</li>
-        </ul>
-
-        <pre>
-          <code className="language-python">{`
-llm = ChatOllama(model='gemma3:27b', temperature=0.0)
-result = llm.invoke({"context": context, "question": question})
-          `}</code>
+        <h4>Ollama-based Gemma3 Model</h4>
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`llm = ChatOllama(model='gemma3:27b', temperature=0.0)
+result = llm.invoke({"context": context, "question": question})`}
         </pre>
 
         <h3>03. Issues and Resolutions</h3>

@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function QA({ onClose = () => {} }) {
+  const [openId, setOpenId] = useState(null);
+
   const qaList = [
     {
       id: "qa-1",
-      q: "What is your background?",
-      a: "I majored in Civil Engineering and worked in road design and project management before transitioning into AI/ML research."
+      q: "Why did you transition from Civil Engineer to AI Engineer?",
+      a: `I’d like to solve various problems within the industry using artificial intelligence.
+Originally, I worked at a civil engineering company after I graduated from university.
+And I often faced repetitive problems in the company.
+I thought these problems could be solved with computers.
+Computers have developed a lot, but they still haven’t been applied to every industry.
+That’s why I decided to become an AI engineer.
+I’d like to use it to take on a wide range of challenges.`
     },
     {
       id: "qa-2",
-      q: "Why did you move into AI/ML?",
-      a: "I realized that repetitive engineering problems could be solved using data-driven AI solutions, which motivated me to pursue this field."
+      q: "What kind of projects have you worked on?",
+      a: `I’ve developed a SmartStore FAQ ChatBot, a multimodal Presentation Agent,
+wildfire prediction models, and building energy forecasting pipelines.`
     },
     {
       id: "qa-3",
-      q: "What kind of projects have you worked on?",
-      a: "I’ve developed a SmartStore FAQ ChatBot, a multimodal Presentation Agent, wildfire prediction models, and building energy forecasting pipelines."
-    },
-    {
-      id: "qa-4",
       q: "What are your current research interests?",
-      a: "I am interested in AI-driven transportation, mobility optimization, and infrastructure analytics, particularly using RAG, LLMs, and time-series forecasting."
+      a: `I am interested in AI-driven transportation, mobility optimization, and infrastructure analytics,
+particularly using RAG, LLMs, and time-series forecasting.`
     }
   ];
+
+  const toggleAnswer = (id) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   return (
     <div
@@ -62,10 +71,29 @@ export default function QA({ onClose = () => {} }) {
 
         {/* Q&A List */}
         {qaList.map((item) => (
-          <div key={item.id} style={{ marginBottom: "1.5rem" }}>
-            <p><b>Q:</b> {item.q}</p>
-            <p><b>A:</b> {item.a}</p>
-            <hr />
+          <div key={item.id} style={{ marginBottom: "1rem" }}>
+            <button
+            type="button"   // ✅ type 속성 추가
+            onClick={() => toggleAnswer(item.id)}
+            style={{
+                width: "100%",
+                textAlign: "left",
+                background: "#f5f5f5",
+                border: "1px solid #ddd",
+                borderRadius: "5px",
+                padding: "0.8rem",
+                fontSize: "1rem",
+                cursor: "pointer",
+                fontWeight: "bold"
+            }}
+            >
+            {item.q}
+            </button>
+            {openId === item.id && (
+              <div style={{ padding: "0.8rem 1rem", borderLeft: "3px solid #007bff", background: "#fafafa" }}>
+                <p style={{ whiteSpace: "pre-line", margin: 0 }}>{item.a}</p>
+              </div>
+            )}
           </div>
         ))}
 
