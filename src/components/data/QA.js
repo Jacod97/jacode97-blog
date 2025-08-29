@@ -15,12 +15,12 @@ Computers have developed a lot, but they still haven’t been applied to every i
 That’s why I decided to become an AI engineer.
 I’d like to use it to take on a wide range of challenges.`
     },
-//     {
-//       id: "qa-2",
-//       q: "What kind of projects have you worked on?",
-//       a: `I’ve developed a SmartStore FAQ ChatBot, a multimodal Presentation Agent,
-// wildfire prediction models, and building energy forecasting pipelines.`
-//     },
+    {
+      id: "qa-2",
+      q: "What research or field would you like to focus on?",
+      a: `I am interested in the field of smart cities. In the past, to prevent crime in urban areas, police had to patrol the city in person. But now, thanks to widespread CCTV coverage, people can feel much safer. Even when crimes do occur, it’s much easier to avoid injustice—a significant change from before.
+  Just like this, I hope to advance technology further so that daily life in the city can be both safer and more convenient. My goal is to apply AI to transform ordinary cities into smart cities, creating changes that people can truly feel in their everyday lives.`
+    },
 //     {
 //       id: "qa-3",
 //       q: "What are your current research interests?",
