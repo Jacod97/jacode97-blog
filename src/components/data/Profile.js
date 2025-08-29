@@ -163,7 +163,7 @@ export default function Profile({ onClose = () => {} }) {
             fontSize: "0.95rem"
           }}
         >
-          닫기
+          Close
         </button>
       </div>
     </div>

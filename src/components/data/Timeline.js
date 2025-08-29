@@ -185,7 +185,7 @@ export default function Timeline({ onClose }) {
               fontSize: "1rem"
             }}
           >
-            닫기
+            Close
           </button>
         </div>
       </div>
