@@ -60,7 +60,8 @@ particularly using RAG, LLMs, and time-series forecasting.`
           width: "650px",
           maxHeight: "80vh",
           overflowY: "auto",
-          boxShadow: "0 6px 12px rgba(0,0,0,0.15)"
+          boxShadow: "0 6px 12px rgba(0,0,0,0.15)",
+          fontFamily: "Georgia, serif" // ✅ 글씨체 느낌
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -73,11 +74,11 @@ particularly using RAG, LLMs, and time-series forecasting.`
         {qaList.map((item) => (
           <div key={item.id} style={{ marginBottom: "1rem" }}>
             <button
-            type="button"   // ✅ type 속성 추가
-            onClick={() => toggleAnswer(item.id)}
-            style={{
+              type="button"
+              onClick={() => toggleAnswer(item.id)}
+              style={{
                 width: "100%",
-                textAlign: "left",
+                textAlign: "left", // 질문 버튼도 좌측 정렬
                 background: "#f5f5f5",
                 border: "1px solid #ddd",
                 borderRadius: "5px",
@@ -85,12 +86,19 @@ particularly using RAG, LLMs, and time-series forecasting.`
                 fontSize: "1rem",
                 cursor: "pointer",
                 fontWeight: "bold"
-            }}
+              }}
             >
-            {item.q}
+              {item.q} {openId === item.id ? "▲" : "▼"} {/* 열림/닫힘 표시 */}
             </button>
             {openId === item.id && (
-              <div style={{ padding: "0.8rem 1rem", borderLeft: "3px solid #007bff", background: "#fafafa" }}>
+              <div
+                style={{
+                  padding: "0.8rem 1rem",
+                  borderLeft: "3px solid #007bff",
+                  background: "#fafafa",
+                  textAlign: "left" // ✅ 답변 좌측 정렬
+                }}
+              >
                 <p style={{ whiteSpace: "pre-line", margin: 0 }}>{item.a}</p>
               </div>
             )}

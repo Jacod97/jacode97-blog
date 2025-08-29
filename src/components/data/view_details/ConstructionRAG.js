@@ -302,8 +302,18 @@ result = llm.invoke({"context": context, "question": question})`}
           to minimize data loss and maintain consistency.
         </p>
 
-        <pre>
-          <code className="language-python">{`
+        <pre
+          style={{
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "1rem",
+            borderRadius: "8px",
+            overflowX: "auto",
+            fontSize: "0.9rem",
+            lineHeight: "1.4",
+          }}
+        >
+{`
 construction_fill_values = {
     "TRAIN_02856": "Architecture > Finishing work",
     ...
@@ -313,9 +323,8 @@ for record_id, value in construction_fill_values.items():
 
 train["personal_accident"].fillna("None", inplace=True)
 train["cause_of_accident"].fillna("Other", inplace=True)
-          `}</code>
+          `}
         </pre>
-
         <p>
           While this approach strengthened real-world applicability, it was less aligned with
           evaluation metrics such as Jaccard similarity. Generative responses provided semantically
