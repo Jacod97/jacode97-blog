@@ -58,87 +58,253 @@ export default function ConstructionRAG({ onClose }) {
 
         <h3>01. Project Introduction</h3>
         <p>
-          This project was conducted as part of the Hansol Deco Season 3 AI Competition.
-          It aims to develop an AI model that analyzes the causes of construction accidents
-          and automatically generates countermeasures, including prevention and response strategies,
-          based on accident situation data.
+          This project was developed within the framework of the Hansol Deco Season 3 AI Competition.
+          Its purpose was to design an AI model capable of analyzing construction accident data
+          to determine root causes and to generate countermeasures, including prevention and response strategies.
         </p>
 
         <h3>02. Roles and Contributions</h3>
         <h4>Handling Missing Values</h4>
         <p>
-          Rather than simple deletion of missing values, this project adopted a
-          <i>manual correction approach focused on data restoration</i>.
-          For key columns such as <code>construction_type</code>, <code>accident_object</code>,
-          and <code>work_process</code>, meaningful values were predefined by accident ID,
-          and appropriate values were directly assigned when the ID was encountered.
-          This effectively preserved the contextual integrity of each accident case.
+          Instead of simply removing missing values, this project adopted a
+          <i>domain-informed manual correction approach</i> focused on data restoration.
+          For critical fields such as <code>construction_type</code>, <code>accident_object</code>, 
+          and <code>work_process</code>, meaningful values were predefined by accident ID.
+          When a specific ID was encountered, the relevant value was assigned directly.
+          This ensured contextual fidelity for each accident record.
         </p>
+
+        <pre>
+          <code className="language-python">{`
+construction_fill_values = {
+    "TRAIN_02856": "Architecture > Finishing work",
+    "TRAIN_13708": "Civil > Earthwork",
+    # ...
+}
+
+for record_id, value in construction_fill_values.items():
+    train.loc[train["ID"] == record_id, "construction_type"] = value
+          `}</code>
+        </pre>
+
+        <p>
+          The same procedure was applied to <code>accident_object</code> and <code>work_process</code>.
+          Where mapping values were absent, the label “Other” was used as a substitute.
+          For <code>personal_accident</code>, <code>material_accident</code>, and <code>cause_of_accident</code>, 
+          conventional missing-value handling was applied, assigning default values to avoid errors in text-model inputs:
+        </p>
+
+        <pre>
+          <code className="language-python">{`
+train["personal_accident"].fillna("None", inplace=True)
+train["material_accident"].fillna("None", inplace=True)
+train["cause_of_accident"].fillna("Other", inplace=True)
+          `}</code>
+        </pre>
 
         <h4>Accident Report Preprocessing and Metadata Classification</h4>
         <ul>
-          <li>Constructed a metadata dictionary to automatically classify construction type, work type, accident type, and accident object based on report filenames.</li>
-          <li>Implemented dynamic filtering conditions according to question keywords to enhance search performance.</li>
+          <li>Constructed a metadata dictionary to automatically classify accident reports into construction type, work type, accident type, and accident object, based on filenames.</li>
+          <li>Introduced dynamic keyword-based filters to enhance retrieval accuracy for context-specific questions.</li>
         </ul>
+
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            margin: "1rem 0",
+            fontSize: "0.9rem",
+          }}
+        >
+          <thead>
+            <tr style={{ background: "#f0f0f0" }}>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Metadata Field</th>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Category</th>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Keyword Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Architecture</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                Building, construction site, construction machine, contractor
+              </td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Civil</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                Bridge, tunnel, road, railway, port, river
+              </td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Landscape</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Landscape, tree, planting</td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Facility</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                Facility, plant, system, machinery
+              </td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>construction_type</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Other</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Not included above</td>
+            </tr>
+          </tbody>
+        </table>
 
         <h4>RAG-based Retrieval System</h4>
         <ul>
-          <li>Built a LangChain-based vector search system augmented with metadata filtering to improve case relevance.</li>
-          <li>Ensured contextual reliability by retrieving only accident cases relevant to the query.</li>
+          <li>Implemented a LangChain vector retrieval pipeline with metadata filters to improve relevance of retrieved accident cases.</li>
+          <li>Ensured contextual reliability by extracting cases matching the query’s semantic context.</li>
         </ul>
+
+        <pre>
+          <code className="language-python">{`
+rag_chain = (
+    {
+        'context': lambda inputs: "\\n\\n".join([
+            res['section'] for res in search_similar_sections(
+                inputs['question'], vectorstore,
+                filters=get_dynamic_filters(inputs['question']), k=3
+            )
+        ]),
+        'question': itemgetter("question")
+    }
+    | prompt 
+    | llm
+    | StrOutputParser()
+)
+          `}</code>
+        </pre>
 
         <h4>FAISS Vector Store and GPU Embedding</h4>
         <ul>
-          <li>Utilized the <code>jhgan/ko-sbert-sts</code> model to embed documents and stored them in FAISS.</li>
-          <li>Enabled fast batch encoding and GPU acceleration to process thousands of documents efficiently.</li>
+          <li>Embedded documents using <code>jhgan/ko-sbert-sts</code> and stored them in FAISS.</li>
+          <li>Batch encoding with GPU acceleration enabled fast processing of thousands of documents.</li>
         </ul>
+
+        <pre>
+          <code className="language-python">{`
+model = SentenceTransformer("jhgan/ko-sbert-sts").to(device)
+embeddings = model.encode(batch, device=device)
+          `}</code>
+        </pre>
 
         <h4>Ollama-based Gemma3 Model for Response Generation</h4>
         <ul>
-          <li>Generated concise response statements using the Gemma3 model by leveraging retrieved similar cases as context.</li>
-          <li>Controlled format according to evaluation standards (token limit, unified style, removal of unnecessary modifiers).</li>
+          <li>Generated concise response sentences with the Gemma3 model, using similar accident cases as context.</li>
+          <li>Controlled token length (≤100), formatting, and removed unnecessary modifiers to align with evaluation standards.</li>
         </ul>
+
+        <pre>
+          <code className="language-python">{`
+llm = ChatOllama(model='gemma3:27b', temperature=0.0)
+result = llm.invoke({"context": context, "question": question})
+          `}</code>
+        </pre>
 
         <h3>03. Issues and Resolutions</h3>
         <p>
-          During development, challenges arose regarding the handling of incomplete accident data and balancing
-          between generative and retrieval-based responses. Manual correction ensured contextual fidelity,
-          while adjustments to the RAG pipeline improved precision.
+          Issues emerged in balancing manual correction of accident data with automated generation.
+          Domain-based corrections ensured consistency, while adjustments to the retrieval pipeline
+          improved overall system reliability.
         </p>
 
         <h3>04. Analysis of Winning Team</h3>
         <p>
-          The first-place team embedded the <code>cause_of_accident</code> column at the sentence level
-          and used cosine similarity to retrieve similar accidents. Their responses directly referenced
-          sentences from retrieved documents, which aligned strongly with the evaluation metrics.
-          Additionally, they standardized response length by analyzing the average and median of sentence lengths.
+          The first-place team embedded the <code>cause_of_accident</code> column at the sentence level,
+          using cosine similarity to retrieve relevant accidents. Their method directly referenced
+          retrieved sentences to generate responses, aligning closely with the evaluation metrics.
         </p>
         <p>
-          In contrast, our project employed a composite feature approach
-          (<code>construction_type</code>, <code>accident_object</code>, <code>work_process</code>, and <code>cause_of_accident</code>)
-          combined with LLM-based generation. This ensured flexibility and practical applicability,
-          though it was less directly aligned with evaluation scoring based on lexical similarity.
+          They standardized response length by examining the average and median sentence lengths,
+          and avoided composite features, focusing on sentence-level embeddings to achieve
+          intuitive similarity matching.
         </p>
+
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            margin: "1rem 0",
+            fontSize: "0.9rem",
+          }}
+        >
+          <thead>
+            <tr style={{ background: "#f0f0f0" }}>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Comparison Item</th>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Winning Team</th>
+              <th style={{ border: "1px solid #ccc", padding: "0.5rem" }}>This Project</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Embedding Basis</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Cause of Accident (sentence)</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>
+                Construction Type, Accident Object, Work Process, Cause of Accident (composite)
+              </td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Similarity Calculation</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Cosine similarity</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Vector retrieval (RAG)</td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Response Method</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Reference & Combine Sentences</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>LLM generation or retrieval-based</td>
+            </tr>
+            <tr>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Evaluation Strategy</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Optimized for Jaccard similarity</td>
+              <td style={{ border: "1px solid #ccc", padding: "0.5rem" }}>Semantic-rich response generation</td>
+            </tr>
+          </tbody>
+        </table>
 
         <h3>05. Project Retrospective</h3>
         <p>
-          To better reflect real-world construction accident scenarios, this project separated and structured
-          critical fields such as construction type, accident object, work process, and cause of accident.
-          A LangChain-based RAG system was combined with Ollama’s Gemma3 model to generate structured responses.
+          This project aimed to realistically capture accident scenarios by separating and structuring
+          fields such as construction type, accident object, work process, and cause of accident.
+          A LangChain-based RAG retrieval pipeline was combined with Ollama’s Gemma3 LLM to
+          generate structured responses.
         </p>
         <p>
-          Special emphasis was placed on <b>handling missing values</b>. Instead of discarding incomplete data,
-          accident IDs were manually mapped to appropriate domain-specific corrections, minimizing information loss
-          and preserving consistency.
+          The most critical element was <b>handling missing values</b>. Rather than simple deletion,
+          manual corrections were performed according to accident IDs, reflecting domain knowledge
+          to minimize data loss and maintain consistency.
+        </p>
+
+        <pre>
+          <code className="language-python">{`
+construction_fill_values = {
+    "TRAIN_02856": "Architecture > Finishing work",
+    ...
+}
+for record_id, value in construction_fill_values.items():
+    train.loc[train["ID"] == record_id, "construction_type"] = value
+
+train["personal_accident"].fillna("None", inplace=True)
+train["cause_of_accident"].fillna("Other", inplace=True)
+          `}</code>
+        </pre>
+
+        <p>
+          While this approach strengthened real-world applicability, it was less aligned with
+          evaluation metrics such as Jaccard similarity. Generative responses provided semantically
+          rich and natural outputs, but they sometimes scored lower than retrieval-based methods
+          in quantitative assessments.
         </p>
         <p>
-          While this structural approach supported practical applicability, it faced disadvantages in
-          quantitative evaluations compared to reference-based methods. Generative responses were semantically rich
-          and natural, but they tended to score lower than direct retrieval-based responses in similarity metrics.
-        </p>
-        <p>
-          This highlighted the importance of designing <i>hybrid strategies</i> that flexibly combine
-          generative and retrieval methods depending on evaluation criteria and practical needs.
+          This experience underscored the need to design <i>hybrid strategies</i> that flexibly
+          combine generation and retrieval depending on evaluation metrics and practical contexts.
         </p>
       </div>
     </div>

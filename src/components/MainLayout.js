@@ -3,6 +3,7 @@ import ChatBox from "./ChatBox";
 import Profile from "./data/Profile";
 import Timeline from "./data/Timeline"; 
 import Projects from "./data/Project"; 
+import QA from "./data/QA"; 
 
 const cardStyle = {
   background: "white",
@@ -55,7 +56,7 @@ export default function MainLayout() {
           style={{ ...cardStyle, border: "none" }}
           onClick={() => setActiveModal("qa")}
         >
-          <h2>Q&A about myself</h2>
+          <h2>Interview</h2>
           <p>Curious about me? Here are some quick answers!</p>
         </button>
       </div>
@@ -78,6 +79,7 @@ export default function MainLayout() {
       {activeModal === "profile" && <Profile onClose={() => setActiveModal(null)} />}
       {activeModal === "timeline" && <Timeline onClose={() => setActiveModal(null)} />}
       {activeModal === "project" && <Projects onClose={() => setActiveModal(null)} />}  
+      {activeModal === "qa" && <QA onClose={() => setActiveModal(null)} />}  
     </section>
   );
 }
