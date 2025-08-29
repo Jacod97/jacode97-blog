@@ -36,9 +36,9 @@ export default function Hero() {
           Let me introduce myself
         </h2>
         <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-          Hello, I’m Jae-sik Jung, an AI Engineer. I am based in Seoul, South Korea.
-          When I was younger, I enjoyed mathematics, especially the process of solving problems and finding answers.
-          As I grew older, I also became interested in subjects like mathematics, statistics, mechanics, and English.
+          Hello, I’m Jae-sik Jung, an AI Engineer living in Seoul, South Korea.
+          When I was younger, I have enjoyed mathematics, especially the process of solving problems and figuring out the answers
+          Over time, my interests expanded to a wider range of subjects, including mathematics, statistics, mechanics, and English.
           Today, I place great value on continuous learning and growth, and I am always studying and improving myself.
           This mindset has driven me to keep exploring new knowledge and challenges in a rapidly changing industry,
           and eventually led me to the fascinating field of artificial intelligence.

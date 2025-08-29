@@ -15,18 +15,18 @@ Computers have developed a lot, but they still haven’t been applied to every i
 That’s why I decided to become an AI engineer.
 I’d like to use it to take on a wide range of challenges.`
     },
-    {
-      id: "qa-2",
-      q: "What kind of projects have you worked on?",
-      a: `I’ve developed a SmartStore FAQ ChatBot, a multimodal Presentation Agent,
-wildfire prediction models, and building energy forecasting pipelines.`
-    },
-    {
-      id: "qa-3",
-      q: "What are your current research interests?",
-      a: `I am interested in AI-driven transportation, mobility optimization, and infrastructure analytics,
-particularly using RAG, LLMs, and time-series forecasting.`
-    }
+//     {
+//       id: "qa-2",
+//       q: "What kind of projects have you worked on?",
+//       a: `I’ve developed a SmartStore FAQ ChatBot, a multimodal Presentation Agent,
+// wildfire prediction models, and building energy forecasting pipelines.`
+//     },
+//     {
+//       id: "qa-3",
+//       q: "What are your current research interests?",
+//       a: `I am interested in AI-driven transportation, mobility optimization, and infrastructure analytics,
+// particularly using RAG, LLMs, and time-series forecasting.`
+//     }
   ];
 
   const toggleAnswer = (id) => {
