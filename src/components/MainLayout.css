@@ -1,13 +1,18 @@
 .card {
-  background: #f9fafb; /* 연한 회색 톤 */
+  background: #f9fafb;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 3rem 2rem;      /* ✅ 안쪽 여백 늘림 */
+  min-height: 300px;       /* ✅ 최소 높이 지정 */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   cursor: pointer;
   border: none;
   transition: all 0.25s ease;
+  display: flex;           /* ✅ 중앙 정렬 */
+  flex-direction: column;
+  justify-content: center;
 }
+
 
 .card:hover,
 .card:focus {

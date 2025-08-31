@@ -13,9 +13,9 @@ export default function MainLayout() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)", // 2열 고정
+          gridTemplateColumns: "repeat(4, 1fr)",  // ✅ 4개 한 줄
           gap: "2rem",
-          maxWidth: "1200px",   // ✅ 넓게 확장
+          maxWidth: "1400px",   // 더 넓게 확장
           margin: "0 auto"
         }}
       >
@@ -25,7 +25,7 @@ export default function MainLayout() {
         </button>
 
         <button type="button" className="card" onClick={() => setActiveModal("qa")}>
-          <h2>Q&A</h2>
+          <h2>Interview</h2>
           <p>Curious about me? Here are some quick answers!</p>
         </button>
 

@@ -36,15 +36,15 @@ export default function Hero() {
           Let me introduce myself
         </h2>
         <p style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-          Hello, I’m Jae-sik Jung, an AI Engineer living in Seoul, South Korea.
-          When I was younger, I have enjoyed mathematics, especially the process of solving problems and figuring out the answers
-          Over time, my interests expanded to a wider range of subjects, including mathematics, statistics, mechanics, and English.
-          Today, I place great value on continuous learning and growth, and I am always studying and improving myself.
-          This mindset has driven me to keep exploring new knowledge and challenges in a rapidly changing industry,
-          and eventually led me to the fascinating field of artificial intelligence.
-          I prefer focusing on the cause of a problem rather than just its solution.
-          My goal is to fundamentally understand problems and create innovative solutions,
-          growing into an AI professional who can make a meaningful impact.
+          Hello, I&apos;m Jaesik Jeong, an AI engineer living in Seoul.
+          This website introduces me to people from various countries.
+          I also use the <strong>Diary</strong> section below to improve my English skills by writing in English.<br />
+          <strong>Profile</strong> allows you to check out my personal information.<br />
+          <strong>Interview</strong> consists of a Q&A session that gives you a glimpse into my thoughts and values.<br />
+          <strong>Timeline</strong> allows you to see my life&apos;s journey at a glance.<br />
+          <strong>Projects</strong> shows traces of the various side projects I&apos;ve undertaken.<br />
+          If you have any questions about me, please ask the chatbot on the right or check out Interview. Please note that the chatbot can only accept five questions to conserve my tokens.
+          If you&apos;d like to chat with me for any other reason, please contact me via the email address listed in Profile. I&apos;m always happy to hear from you.
         </p>
       </div>
     </section>
