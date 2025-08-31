@@ -1,0 +1,29 @@
+.card {
+  background: #f9fafb; /* 연한 회색 톤 */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+.card:hover,
+.card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  background: #e0f2fe; /* hover 시 연한 하늘색 */
+  outline: none;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #0f172a; /* 진한 네이비 */
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #475569; /* 연한 네이비 그레이 */
+}
