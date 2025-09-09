@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ChatBox() {
+export default function ChatBox({ theme }) {
   const [messages, setMessages] = useState([
     { id: 1, from: "bot", text: "Welcome! Please introduce yourself first." }
   ]);
@@ -15,6 +15,7 @@ export default function ChatBox() {
   const [error, setError] = useState(""); 
   const [loading, setLoading] = useState(false); // ✅ 로딩 상태 추가
   const sessionId = "react-user";
+  const isDark = theme === 'dark';
 
   // 사용자 정보 전송
   const registerUser = async () => {
@@ -79,7 +80,11 @@ export default function ChatBox() {
       {!registered ? (
         <div style={{ marginBottom: "1rem" }}>
           {/* 안내 문구 */}
-          <p style={{ marginBottom: "1rem", fontSize: "0.9rem", color: "#555" }}>
+          <p style={{ 
+            marginBottom: "1rem", 
+            fontSize: "0.9rem", 
+            color: isDark ? "#e2e8f0" : "#555" 
+          }}>
             If you want to use this chatbot, you need to enter your information below.
             This is only to know who wants to connect with me on this website.
             It will not be used for any commercial purpose
@@ -146,10 +151,31 @@ export default function ChatBox() {
               display: "block",
               width: "100%",
               padding: "0.8rem",
-              background: "#007bff",
+              background: isDark ? "linear-gradient(135deg, #60a5fa 0%, #a855f7 100%)" : "linear-gradient(135deg, #87CEEB 0%, #4FC3F7 100%)",
               color: "white",
-              border: "none",
-              borderRadius: "5px"
+              border: isDark ? "1px solid rgba(96, 165, 250, 0.3)" : "1px solid rgba(135, 206, 235, 0.3)",
+              borderRadius: "12px",
+              fontWeight: "600",
+              fontSize: "0.9rem",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              boxShadow: isDark ? "0 4px 16px rgba(96, 165, 250, 0.2)" : "0 4px 16px rgba(135, 206, 235, 0.2)"
+            }}
+            onMouseOver={(e) => {
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.boxShadow = isDark ? "0 6px 20px rgba(96, 165, 250, 0.3)" : "0 6px 20px rgba(135, 206, 235, 0.3)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = "translateY(0)";
+              e.target.style.boxShadow = isDark ? "0 4px 16px rgba(96, 165, 250, 0.2)" : "0 4px 16px rgba(135, 206, 235, 0.2)";
+            }}
+            onFocus={(e) => {
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.boxShadow = isDark ? "0 6px 20px rgba(96, 165, 250, 0.3)" : "0 6px 20px rgba(135, 206, 235, 0.3)";
+            }}
+            onBlur={(e) => {
+              e.target.style.transform = "translateY(0)";
+              e.target.style.boxShadow = isDark ? "0 4px 16px rgba(96, 165, 250, 0.2)" : "0 4px 16px rgba(135, 206, 235, 0.2)";
             }}
           >
             Register
@@ -159,6 +185,7 @@ export default function ChatBox() {
         <>
           {/* 대화창 */}
           <div
+            className="scrollbar-none"
             style={{
               flex: 1,
               overflowY: "auto",
@@ -230,9 +257,15 @@ export default function ChatBox() {
               style={{
                 marginLeft: "0.5rem",
                 padding: "0.5rem 1rem",
-                borderRadius: "5px",
-                background: "#007bff",
-                color: "white"
+                borderRadius: "8px",
+                background: isDark ? "linear-gradient(135deg, #60a5fa 0%, #a855f7 100%)" : "linear-gradient(135deg, #87CEEB 0%, #4FC3F7 100%)",
+                color: "white",
+                border: "none",
+                fontWeight: "600",
+                fontSize: "0.85rem",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                boxShadow: isDark ? "0 2px 8px rgba(96, 165, 250, 0.2)" : "0 2px 8px rgba(135, 206, 235, 0.2)"
               }}
             >
               Send
