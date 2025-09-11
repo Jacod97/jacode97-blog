@@ -24,11 +24,6 @@ export default function MainLayout() {
           <p>Get to know me better here!</p>
         </button>
 
-        <button type="button" className="card" onClick={() => setActiveModal("qa")}>
-          <h2>Interview</h2>
-          <p>Curious about me? Here are some quick answers!</p>
-        </button>
-
         <button type="button" className="card" onClick={() => setActiveModal("timeline")}>
           <h2>Timeline</h2>
           <p>Take a look at my journey through school and work!</p>
@@ -37,6 +32,11 @@ export default function MainLayout() {
         <button type="button" className="card" onClick={() => setActiveModal("project")}>
           <h2>Projects</h2>
           <p>Check out my side projects and professional work!</p>
+        </button>
+        
+        <button type="button" className="card" onClick={() => setActiveModal("qa")}>
+          <h2>Interview</h2>
+          <p>Curious about me? Here are some quick answers!</p>
         </button>
       </div>
 
