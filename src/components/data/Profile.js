@@ -13,7 +13,7 @@ import postgresqlIcon from "../../assets/postgressql.png";
 export default function Profile({ onClose = () => {} }) {
   const profile = {
     email: "jacode6894@gmail.com",
-    linkedin: "https://linkedin.com/in/jacod97",
+    linkedin: "https://www.linkedin.com/in/jacode6894/",
     github: "https://github.com/Jacod97",
     abilities: [
       "Comprehensive understanding of spatial data, big data, and AI technologies",

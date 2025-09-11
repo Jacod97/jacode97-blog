@@ -45,14 +45,36 @@ body.dark .app-header h1 {
   background-clip: text !important;
 }
 
-/* Dark mode theme toggle */
-body.dark .theme-toggle-btn {
-  background: rgba(51, 65, 85, 0.8) !important;
-  border: 1px solid rgba(71, 85, 105, 0.7) !important;
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;         /* 아이콘과 글자 간격 */
+  padding: 0.5rem 1rem;
+  border-radius: 50px; /* pill 버튼 형태 */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-body.dark .theme-toggle-btn:hover .moon-shadow {
-  transform: translateX(4px) !important;
+.theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+body.dark .theme-toggle {
+  color: #f8fafc;
+  background: rgba(51, 65, 85, 0.8);
+  border: 1px solid rgba(71, 85, 105, 0.7);
 }
 
 /* 메인 App 레이아웃 */

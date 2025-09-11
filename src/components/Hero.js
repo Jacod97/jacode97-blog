@@ -39,8 +39,9 @@ export default function Hero({ theme }) {
           <div
             style={{
               display: "flex",
+              flexDirection: showMore ? "column" : "row",
+              alignItems: showMore ? "flex-start" : "center",
               gap: "2.5rem",
-              alignItems: "center",
               flexWrap: "wrap",
             }}
           >
@@ -49,14 +50,16 @@ export default function Hero({ theme }) {
               src={profileImg}
               alt="Jaesik Jeong"
               style={{
-                width: "250px",
-                height: "250px",
+                maxWidth: "220px",
+                height: "auto",
                 borderRadius: "20px",
                 objectFit: "cover",
+                imageRendering: "high-quality",
                 boxShadow: isDark
                   ? "0 4px 16px rgba(0, 0, 0, 0.3)"
                   : "0 4px 16px rgba(0, 0, 0, 0.1)",
                 flexShrink: 0,
+                alignSelf: showMore ? "flex-start" : "center",
               }}
             />
 
@@ -99,37 +102,45 @@ export default function Hero({ theme }) {
                 skills.{" "}
               </p>
 
-              <button
-                type="button"
-                onClick={() => setShowMore(!showMore)}
-                style={{
-                  color: isDark ? "#60a5fa" : "#3b82f6",
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  padding: 0,
-                  textDecoration: "none",
-                  borderBottom: "1px solid transparent",
-                  transition: "border-color 0.2s ease"
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.borderBottomColor = isDark ? "#60a5fa" : "#3b82f6";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.borderBottomColor = "transparent";
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.borderBottomColor = isDark ? "#60a5fa" : "#3b82f6";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.borderBottomColor = "transparent";
-                }}
-              >
-                more
-              </button>
+              {/* ✅ showMore가 false일 때만 more 버튼 */}
+              {!showMore && (
+                <button
+                  type="button"
+                  onClick={() => setShowMore(true)}
+                  style={{
+                    color: isDark ? "#60a5fa" : "#3b82f6",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                    padding: 0,
+                    textDecoration: "none",
+                    borderBottom: "1px solid transparent",
+                    transition: "border-color 0.2s ease",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.borderBottomColor = isDark
+                      ? "#60a5fa"
+                      : "#3b82f6";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.borderBottomColor = "transparent";
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderBottomColor = isDark
+                      ? "#60a5fa"
+                      : "#3b82f6";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderBottomColor = "transparent";
+                  }}
+                >
+                  more
+                </button>
+              )}
 
+              {/* ✅ showMore가 true일 때 확장 내용 + 맨 하단에 less 버튼 */}
               {showMore && (
                 <div
                   style={{
@@ -156,7 +167,7 @@ export default function Hero({ theme }) {
                     projects I&apos;ve undertaken.
                   </p>
                   <p>
-                    <strong>Interview</strong> is designed as a Q&A session,
+                    <strong>Interview</strong> is designed as a Q&amp;A session,
                     offering a glimpse into my thoughts and values.
                   </p>
                   <p style={{ fontSize: "0.95rem" }}>
@@ -164,11 +175,46 @@ export default function Hero({ theme }) {
                     on the right. Please note that the chatbot can only accept
                     five questions to conserve my tokens.
                   </p>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowMore(false)}
+                    style={{
+                      marginTop: "1rem",
+                      color: isDark ? "#60a5fa" : "#3b82f6",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "1rem",
+                      fontWeight: "600",
+                      padding: 0,
+                      textDecoration: "none",
+                      borderBottom: "1px solid transparent",
+                      transition: "border-color 0.2s ease",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.borderBottomColor = isDark
+                        ? "#60a5fa"
+                        : "#3b82f6";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.borderBottomColor = "transparent";
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderBottomColor = isDark
+                        ? "#60a5fa"
+                        : "#3b82f6";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderBottomColor = "transparent";
+                    }}
+                  >
+                    less
+                  </button>
                 </div>
               )}
             </div>
-          </div>
-        </div>
+          </div> bnv        </div>
       </section>
 
       {/* Mobile ChatBot Button */}

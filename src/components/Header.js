@@ -59,46 +59,39 @@ export function ThemeToggle({ theme, onToggle }) {
         right: '16px',
         top: '12px',
         zIndex: 60,
-        display: 'grid',
-        placeItems: 'center',
-        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        borderRadius: '50px', /* 원형 → pill */
         border: '1px solid rgba(226, 232, 240, 0.7)',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '44px',
-        height: '44px',
+        padding: '0.5rem 1rem',
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         cursor: 'pointer',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        fontSize: '0.95rem',
+        fontWeight: 600
       }}
       className="theme-toggle-btn"
       onMouseEnter={(e) => {
         if (isLight) {
-          e.target.style.animation = 'spin-slow 0.9s linear';
+          e.currentTarget.style.animation = 'spin-slow 0.9s linear';
         }
       }}
       onMouseLeave={(e) => {
-        e.target.style.animation = '';
+        e.currentTarget.style.animation = '';
       }}
     >
       {isLight ? (
-        <span style={{
-          fontSize: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          ☀️
-        </span>
+        <>
+          <span style={{ fontSize: '20px' }}>☀️</span>
+          <span>DAY</span>
+        </>
       ) : (
-        <span style={{
-          fontSize: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          animation: 'spin-slow 2s linear infinite'
-        }}>
-          🌙
-        </span>
+        <>
+          <span style={{ fontSize: '20px', animation: 'spin-slow 2s linear infinite' }}>🌙</span>
+          <span>Night</span>
+        </>
       )}
     </button>
   );
