@@ -40,7 +40,7 @@ export default function ChatDock() {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data = await response.json();
-      const botMsg = { id: Date.now() + 1, from: "bot", text: data.response };
+      const botMsg = { id: Date.now() + 1, from: "bot", text: data.answer  };
       setMessages((prev) => [...prev, botMsg]);
     } catch (error) {
       const errorMsg = {
