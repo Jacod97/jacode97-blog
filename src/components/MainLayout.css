@@ -1,34 +1,120 @@
 .card {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 3rem 2rem;      /* ✅ 안쪽 여백 늘림 */
-  min-height: 300px;       /* ✅ 최소 높이 지정 */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, rgba(135, 206, 235, 0.8) 0%, rgba(135, 206, 235, 0.6) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(135, 206, 235, 0.3), 0 1px 3px rgba(135, 206, 235, 0.2);
   text-align: center;
   cursor: pointer;
-  border: none;
-  transition: all 0.25s ease;
-  display: flex;           /* ✅ 중앙 정렬 */
+  border: 1px solid rgba(135, 206, 235, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  height: auto;
+  position: relative;
+  overflow: hidden;
 }
 
+body.dark .card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
 
 .card:hover,
 .card:focus {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  background: #e0f2fe; /* hover 시 연한 하늘색 */
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(135, 206, 235, 0.4), 0 4px 12px rgba(135, 206, 235, 0.3);
+  background: linear-gradient(135deg, rgba(135, 206, 235, 0.9) 0%, rgba(135, 206, 235, 0.7) 100%);
+  border-color: rgba(135, 206, 235, 0.6);
   outline: none;
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+body.dark .card:hover,
+body.dark .card:focus {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .card::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
 .card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #0f172a; /* 진한 네이비 */
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #111827;
+  letter-spacing: -0.025em;
+}
+
+body.dark .card h2 {
+  color: #f1f5f9;
 }
 
 .card p {
   font-size: 0.95rem;
-  color: #475569; /* 연한 네이비 그레이 */
+  color: #6b7280;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+body.dark .card p {
+  color: #94a3b8;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1199px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  
+  .card {
+    min-height: 180px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .card {
+    min-height: 160px;
+    padding: 20px 16px;
+  }
+  
+  .card h2 {
+    font-size: 1.125rem;
+  }
+  
+  .card p {
+    font-size: 0.8rem;
+  }
 }
