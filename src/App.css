@@ -162,17 +162,28 @@ body.dark .theme-toggle {
   100% { transform: translateX(calc(100vw + 200px)); }
 }
 
+/* 왼쪽 메인 콘텐츠 */
+.main-panel {
+  flex: 1;
+  min-width: 0;  /* ✅ 오른쪽 패널 밀림 방지 */
+  display: flex;
+  flex-direction: column;
+}
+
 /* 오른쪽 Chat 영역 */
 .chat-panel {
   flex: 0 0 400px;
+  margin-left: auto;      /* ✅ 오른쪽 끝으로 붙이기 */
+  align-self: stretch;    /* ✅ 높이 맞추기 */
   background: rgba(255, 255, 255, 0.7);
   border-left: 2px solid rgba(135, 206, 235, 0.3);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(15px); /* 유리 패널 느낌 */
+  backdrop-filter: blur(15px);
   z-index: 5;
 }
+
 
 body.dark .chat-panel {
   background: rgba(30, 41, 59, 0.8);

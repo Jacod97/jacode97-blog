@@ -8,29 +8,30 @@ import "./App.css";
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved || 'light';
+    const saved = localStorage.getItem("theme");
+    return saved || "light";
   });
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.body.className = theme === 'dark' ? 'dark' : '';
+    localStorage.setItem("theme", theme);
+    document.body.className = theme === "dark" ? "dark" : "";
   }, [theme]);
 
   return (
-    <div className="App" style={{ position: 'relative', overflow: 'hidden' }}>
+    <div className="App" style={{ position: "relative", overflow: "hidden" }}>
       {/* Fixed Header */}
       <AppHeader />
-      
+
       {/* Theme Toggle */}
-      <ThemeToggle 
-        theme={theme} 
-        onToggle={() => setTheme(t => t === 'light' ? 'dark' : 'light')} 
+      <ThemeToggle
+        theme={theme}
+        onToggle={() =>
+          setTheme((t) => (t === "light" ? "dark" : "light"))
+        }
       />
 
       {/* Background Effects */}
-      {/* 구름 - 라이트 모드에만 */}
-      {theme === 'light' && (
+      {theme === "light" && (
         <>
           <div className="cloud-emoji cloud-1">☁️</div>
           <div className="cloud-emoji cloud-2">☁️</div>
@@ -39,21 +40,18 @@ function App() {
           <div className="cloud-emoji cloud-5">☁️</div>
         </>
       )}
-      
-      {/* 별 - 다크 모드에만 */}
-      {theme === 'dark' && <Stars theme={theme} />}
+      {theme === "dark" && <Stars theme={theme} />}
 
       {/* Main Content Area */}
-      <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <div style={{ display: "flex", minHeight: "100vh", width: "100%" }}>
         {/* 왼쪽: Hero + MainLayout */}
-        <div 
-          className="scrollbar-none"
-          style={{ 
-            flex: 1, 
-            overflowY: 'auto', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            position: 'relative' 
+        <div
+          className="scrollbar-none main-panel"
+          style={{
+            overflowY: "auto",
+            display: "flex",
+            flexDirection: "column",
+            position: "relative",
           }}
         >
           <Hero theme={theme} />
@@ -62,16 +60,16 @@ function App() {
 
         {/* 오른쪽: ChatBox 패널 */}
         <div className="chat-panel scrollbar-none">
-          <button 
+          <button
             type="button"
             className="close-btn"
             onClick={() => {
-              const chatPanel = document.querySelector('.chat-panel');
+              const chatPanel = document.querySelector(".chat-panel");
               if (chatPanel) {
-                chatPanel.classList.remove('show');
+                chatPanel.classList.remove("show");
               }
             }}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           >
             ×
           </button>

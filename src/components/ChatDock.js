@@ -31,7 +31,7 @@ export default function ChatDock() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://blog-chatbot-1o2k.onrender.com/chat", {
+      const response = await fetch("https://blog-chatbot-1o2k.onrender.com/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, message: input })
