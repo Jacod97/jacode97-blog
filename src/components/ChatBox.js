@@ -20,7 +20,7 @@ export default function ChatBox({ theme }) {
   // 사용자 정보 전송
   const registerUser = async () => {
     try {
-      await fetch("http://127.0.0.1:8000/register", {
+      await fetch("https://blog-chatbot-1o2k.onrender.com/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, ...userInfo })
@@ -52,7 +52,7 @@ export default function ChatBox({ theme }) {
     setLoading(true); // ✅ 로딩 시작
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/ask", {
+      const response = await fetch("https://blog-chatbot-1o2k.onrender.com/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, question })
