@@ -534,3 +534,20 @@ body.dark .chat-input button {
   background: #60a5fa;
   color: #0f172a;
 }
+/* 다크 모드 - ChatBox 메시지 영역 */
+body.dark .chat-messages {
+  border: 1px solid rgba(148, 163, 184, 0.3) !important;
+  background: #0f172a !important;
+}
+
+/* 다크 모드 - 사용자 메시지 */
+body.dark .chat-message.user span {
+  background: #2563eb !important;
+  color: #f8fafc !important;
+}
+
+/* 다크 모드 - 봇 메시지 */
+body.dark .chat-message.bot span {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+}
