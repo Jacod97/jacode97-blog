@@ -1,29 +1,83 @@
+import { useState, useEffect } from "react";
+import { AppHeader, ThemeToggle } from "./components/Header";
 import Hero from "./components/Hero";
 import MainLayout from "./components/MainLayout";
 import ChatBox from "./components/ChatBox";
+import Stars from "./components/Stars";
 import "./App.css";
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved || 'light';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    document.body.className = theme === 'dark' ? 'dark' : '';
+  }, [theme]);
+
   return (
-    <div className="App">
-      {/* 해 🌞 */}
-      <div className="sun" />
+    <div className="App" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Fixed Header */}
+      <AppHeader />
+      
+      {/* Theme Toggle */}
+      <ThemeToggle 
+        theme={theme} 
+        onToggle={() => setTheme(t => t === 'light' ? 'dark' : 'light')} 
+      />
 
-      {/* 구름 ☁️ */}
-      <div className="cloud small" />
-      <div className="cloud medium" />
-      <div className="cloud large" />
+      {/* Background Effects */}
+      {/* 구름 - 라이트 모드에만 */}
+      {theme === 'light' && (
+        <>
+          <div className="cloud-emoji cloud-1">☁️</div>
+          <div className="cloud-emoji cloud-2">☁️</div>
+          <div className="cloud-emoji cloud-3">☁️</div>
+          <div className="cloud-emoji cloud-4">⛅</div>
+          <div className="cloud-emoji cloud-5">☁️</div>
+        </>
+      )}
+      
+      {/* 별 - 다크 모드에만 */}
+      {theme === 'dark' && <Stars theme={theme} />}
 
-      {/* 왼쪽: Hero + MainLayout */}
-      <div style={{ flex: 1, overflowY: "auto" }}>
-        <Hero />
-        <MainLayout />
-      </div>
+      {/* Main Content Area */}
+      <div style={{ display: 'flex', minHeight: '100vh' }}>
+        {/* 왼쪽: Hero + MainLayout */}
+        <div 
+          className="scrollbar-none"
+          style={{ 
+            flex: 1, 
+            overflowY: 'auto', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            position: 'relative' 
+          }}
+        >
+          <Hero theme={theme} />
+          <MainLayout />
+        </div>
 
-      {/* 오른쪽: ChatBox 패널 */}
-      <div className="chat-panel">
-        <h2>ChatBot</h2>
-        <ChatBox />
+        {/* 오른쪽: ChatBox 패널 */}
+        <div className="chat-panel scrollbar-none">
+          <button 
+            type="button"
+            className="close-btn"
+            onClick={() => {
+              const chatPanel = document.querySelector('.chat-panel');
+              if (chatPanel) {
+                chatPanel.classList.remove('show');
+              }
+            }}
+            style={{ display: 'none' }}
+          >
+            ×
+          </button>
+          <h2>ChatBot</h2>
+          <ChatBox theme={theme} />
+        </div>
       </div>
     </div>
   );

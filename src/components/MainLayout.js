@@ -9,13 +9,17 @@ export default function MainLayout() {
   const [activeModal, setActiveModal] = useState(null);
 
   return (
-    <section style={{ padding: "3rem 4rem" }}>
+    <section className="section" style={{ 
+      padding: "2rem",
+      height: "auto"
+    }}>
       <div
+        className="card-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",  // ✅ 4개 한 줄
-          gap: "2rem",
-          maxWidth: "1400px",   // 더 넓게 확장
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "1rem",
+          maxWidth: "1200px",
           margin: "0 auto"
         }}
       >
