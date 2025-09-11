@@ -214,7 +214,7 @@ export default function Hero({ theme }) {
                 </div>
               )}
             </div>
-          </div> bnv        </div>
+          </div> </div>
       </section>
 
       {/* Mobile ChatBot Button */}
