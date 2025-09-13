@@ -418,7 +418,7 @@ body.dark .card p {
 
 /* 오른쪽 Chat 영역 */
 .chat-panel {
-  flex: 0 0 400px;
+  flex: 0 0 450px;
   margin-left: auto;
   align-self: stretch;
   background: rgba(255, 255, 255, 0.7);
