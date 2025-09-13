@@ -8,22 +8,22 @@ export default function QA({ onClose = () => {} }) {
       id: "qa-1",
       q: "Why did you transition from Civil Engineer to AI Engineer?",
       a: `I began my career as a civil engineer, but I transitioned into AI engineering after recognizing the potential of solving field problems with data and artificial intelligence.
-I believe that in the future, there will be no distinct role called “AI Engineer”; 
-instead, domain-specialized engineers will naturally use AI and data technologies as tools to solve problems.
-To prepare for that future ahead of others, I built up my knowledge of AI, and I am now applying it to address various challenges within the industry.`
+          I believe that in the future, there will be no distinct role called “AI Engineer”; 
+          instead, domain-specialized engineers will naturally use AI and data technologies as tools to solve problems.
+          To prepare for that future ahead of others, I built up my knowledge of AI, and I am now applying it to address various challenges within the industry.`
     },
     {
       id: "qa-2",
       q: "What research or field would you like to focus on?",
       a: `I am interested in the field of smart cities. In the past, to prevent crime in urban areas, police had to patrol the city in person. But now, thanks to widespread CCTV coverage, people can feel much safer. Even when crimes do occur, it’s much easier to avoid injustice—a significant change from before.
-  Just like this, I hope to advance technology further so that daily life in the city can be both safer and more convenient. My goal is to apply AI to transform ordinary cities into smart cities, creating changes that people can truly feel in their everyday lives.`
+          Just like this, I hope to advance technology further so that daily life in the city can be both safer and more convenient. My goal is to apply AI to transform ordinary cities into smart cities, creating changes that people can truly feel in their everyday lives.`
     },
-//     {
-//       id: "qa-3",
-//       q: "What are your current research interests?",
-//       a: `I am interested in AI-driven transportation, mobility optimization, and infrastructure analytics,
-// particularly using RAG, LLMs, and time-series forecasting.`
-//     }
+    {
+      id: "qa-3",
+      q: "What do you enjoy outside of work, and how does it shape your perspective as an engineer?",
+      a: `I enjoy playing soccer. To me, soccer is more than just a sport—it’s a game where countless strategies are created for one ultimate goal: victory. What fascinates me is that success doesn’t rely on an individual’s skill alone, but on the collaboration of the entire team. During a match, unexpected problems constantly arise, and each moment requires quick strategic judgment and the ability to apply one’s skills to overcome them. 
+          The sense of accomplishment when achieving that goal together with teammates is why I love the sport so much. This experience strongly influences my perspective as an engineer as well. Just like soccer, engineering projects demand not only individual expertise but also teamwork and problem-solving, and I believe true success comes from achieving goals through collaboration.`
+    }
   ];
 
   const toggleAnswer = (id) => {
