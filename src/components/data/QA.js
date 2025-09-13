@@ -8,7 +8,8 @@ export default function QA({ onClose = () => {} }) {
       id: "qa-1",
       q: "Why did you transition from Civil Engineer to AI Engineer?",
       a: `I began my career as a civil engineer, but I transitioned into AI engineering after recognizing the potential of solving field problems with data and artificial intelligence.
-I believe that in the future, there will be no distinct role called “AI Engineer”; instead, domain-specialized engineers will naturally use AI and data technologies as tools to solve problems.
+I believe that in the future, there will be no distinct role called “AI Engineer”; 
+instead, domain-specialized engineers will naturally use AI and data technologies as tools to solve problems.
 To prepare for that future ahead of others, I built up my knowledge of AI, and I am now applying it to address various challenges within the industry.`
     },
     {
