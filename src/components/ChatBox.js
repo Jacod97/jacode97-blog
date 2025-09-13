@@ -96,7 +96,6 @@ export default function ChatBox({ theme }) {
             style={{
               flex: 1, overflowY: "auto", marginBottom: "1rem",
               padding: "0.5rem", border: "1px solid #ddd", borderRadius: "8px"
-              // background: "#fff" ← ❌ 삭제
             }}>
             {messages.map((msg) => (
               <div key={msg.id} className={`chat-message ${msg.from}`} style={{ textAlign: msg.from === "user" ? "right" : "left", margin: "0.3rem 0" }}>
@@ -119,9 +118,26 @@ export default function ChatBox({ theme }) {
           </div>
           {/* 입력창 */}
           <div className="chat-input" style={{ display: "flex" }}>
-            <input style={{ flex: 1, padding: "0.5rem", borderRadius: "5px", border: "1px solid #ddd" }}
-              value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && askChatbot()}
-              placeholder="Please enter your message..."/>
+            <textarea
+              style={{
+                flex: 1,
+                padding: "0.5rem",
+                borderRadius: "5px",
+                border: "1px solid #ddd",
+                resize: "none",
+                minHeight: "2.5rem"
+              }}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault(); // 줄바꿈 막고 전송
+                  askChatbot();
+                }
+                // Shift+Enter → textarea 기본 줄바꿈 허용
+              }}
+              placeholder="Please enter your message..."
+            />
             <button type="button" onClick={askChatbot}
               style={{
                 marginLeft: "0.5rem", padding: "0.5rem 1rem", borderRadius: "8px",
