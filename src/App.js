@@ -7,12 +7,11 @@ import Stars from "./components/Stars";
 import "./App.css";
 
 function App() {
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem("theme");
-    return saved || "light";
-  });
+  // ✅ 항상 dark로 시작
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
+    // 사용자가 선택할 때마다 저장
     localStorage.setItem("theme", theme);
     document.body.className = theme === "dark" ? "dark" : "";
   }, [theme]);

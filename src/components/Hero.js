@@ -99,7 +99,7 @@ export default function Hero({ theme }) {
                 Hello, I&apos;m Jaesik Jeong, an AI engineer living in Seoul.{" "}
                 This website is designed to connect and communicate with people
                 from various countries. I also use it to improve my English
-                skills.{" "}
+                skills. You can see the page contents by clicking More below.{" "}
               </p>
 
               {/* ✅ showMore가 false일 때만 more 버튼 */}
