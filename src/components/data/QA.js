@@ -20,7 +20,7 @@ Just like this, I hope to advance technology further so that daily life in the c
     },
     {
       id: "qa-3",
-      q: "What do you enjoy outside of work, and how does it shape your perspective as an engineer?",
+      q: "What do you like to do in your free time, and why?",
       a: `I enjoy playing soccer. To me, soccer is more than just a sport—it’s a game where countless strategies are created for one ultimate goal: victory. What fascinates me is that success doesn’t rely on an individual’s skill alone, but on the collaboration of the entire team. During a match, unexpected problems constantly arise, and each moment requires quick strategic judgment and the ability to apply one’s skills to overcome them. 
 The sense of accomplishment when achieving that goal together with teammates is why I love the sport so much. This experience strongly influences my perspective as an engineer as well. Just like soccer, engineering projects demand not only individual expertise but also teamwork and problem-solving, and I believe true success comes from achieving goals through collaboration.`
     }
