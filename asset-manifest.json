@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/jacode97-blog/static/css/main.94ed92a6.css",
-    "main.js": "/jacode97-blog/static/js/main.9d3d2b8f.js",
+    "main.js": "/jacode97-blog/static/js/main.7895b626.js",
     "static/js/453.1cc31462.chunk.js": "/jacode97-blog/static/js/453.1cc31462.chunk.js",
     "static/media/profile.jpg": "/jacode97-blog/static/media/profile.b015c9cc50e824c98aa4.jpg",
     "static/media/presentation1.png": "/jacode97-blog/static/media/presentation1.af6c6ad84ab51a4227be.png",
@@ -25,11 +25,11 @@
     "static/media/react.png": "/jacode97-blog/static/media/react.98ff38735baa4c1b0381.png",
     "index.html": "/jacode97-blog/index.html",
     "main.94ed92a6.css.map": "/jacode97-blog/static/css/main.94ed92a6.css.map",
-    "main.9d3d2b8f.js.map": "/jacode97-blog/static/js/main.9d3d2b8f.js.map",
+    "main.7895b626.js.map": "/jacode97-blog/static/js/main.7895b626.js.map",
     "453.1cc31462.chunk.js.map": "/jacode97-blog/static/js/453.1cc31462.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.94ed92a6.css",
-    "static/js/main.9d3d2b8f.js"
+    "static/js/main.7895b626.js"
   ]
 }
