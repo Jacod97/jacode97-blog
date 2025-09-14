@@ -26,7 +26,7 @@ export default function Hero({ theme }) {
             backdropFilter: "blur(20px)",
             borderRadius: "32px",
             padding: "2rem",
-            maxWidth: "900px",
+            maxWidth: "1000px",
             width: "100%",
             boxShadow: isDark
               ? "0 8px 32px rgba(0, 0, 0, 0.3)"
@@ -50,7 +50,7 @@ export default function Hero({ theme }) {
               src={profileImg}
               alt="Jaesik Jeong"
               style={{
-                maxWidth: "220px",
+                maxWidth: "300px",
                 height: "auto",
                 borderRadius: "20px",
                 objectFit: "cover",
