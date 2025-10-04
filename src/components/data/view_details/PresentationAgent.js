@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import presentation1 from "../../../assets/presentation1.png";
 import presentation2 from "../../../assets/presentation2.png";
 import presentation3 from "../../../assets/presentation3.png";
 
 export default function PresentationAgent({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -46,6 +57,11 @@ export default function PresentationAgent({ onClose }) {
             background: "transparent",
             fontSize: "1.2rem",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "36px",
+            height: "36px"
           }}
         >
           ✖

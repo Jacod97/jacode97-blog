@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import deepprint1 from "../../../assets/deepprint1.png";
 
 export default function DeepPrint({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -44,6 +55,11 @@ export default function DeepPrint({ onClose }) {
             background: "transparent",
             fontSize: "1.2rem",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "36px",
+            height: "36px"
           }}
         >
           ✖

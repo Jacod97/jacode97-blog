@@ -68,7 +68,6 @@ function App() {
                 chatPanel.classList.remove("show");
               }
             }}
-            style={{ display: "none" }}
           >
             ×
           </button>

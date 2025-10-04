@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import fire1 from "../../../assets/fire1.png"; // [Figure 1]
 import fire2 from "../../../assets/fire2.png"; // [Figure 2]
 import fire21 from "../../../assets/fire2-1.png"; // [Figure 2]
@@ -8,6 +8,17 @@ import fire5 from "../../../assets/fire5.png"; // [Figure 5]
 import fire6 from "../../../assets/fire6.png"; // [Figure 6]
 
 export default function PredictFire({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -50,6 +61,11 @@ export default function PredictFire({ onClose }) {
             background: "transparent",
             fontSize: "1.2rem",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "36px",
+            height: "36px"
           }}
         >
           ✖

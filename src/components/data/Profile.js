@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import pythonIcon from "../../assets/python.png";
 import pytorchIcon from "../../assets/pytorch.png";
 import sklearnIcon from "../../assets/scikit-learn.png";
@@ -38,6 +39,17 @@ export default function Profile({ onClose = () => {} }) {
     ]
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
 
   return (
     <div
@@ -63,7 +75,8 @@ export default function Profile({ onClose = () => {} }) {
           background: "white",
           padding: "1.5rem",     // 전체 padding 살짝 줄임
           borderRadius: "10px",
-          width: "650px",
+          width: "70%",
+          maxWidth: "900px",
           maxHeight: "80vh",
           overflowY: "auto",
           boxShadow: "0 6px 12px rgba(0,0,0,0.15)"
@@ -153,14 +166,18 @@ export default function Profile({ onClose = () => {} }) {
           type="button"
           onClick={onClose}
           style={{
-            marginTop: "1.5rem",
+            margin: "1.5rem auto 0",
             padding: "0.5rem 1rem",
             border: "none",
             borderRadius: "5px",
             background: "#007bff",
             color: "white",
             cursor: "pointer",
-            fontSize: "0.95rem"
+            fontSize: "0.95rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: "120px"
           }}
         >
           Close

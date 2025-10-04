@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import './Modal.css';
 
@@ -12,6 +13,19 @@ export default function Modal({
 }) {
   const { isDarkMode } = useTheme();
 
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleBackdropClick = (e) => {
@@ -20,17 +34,15 @@ export default function Modal({
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-
   return (
     <div
       className={`modal-backdrop ${isDarkMode ? 'dark' : 'light'}`}
       onClick={handleBackdropClick}
-      onKeyDown={handleKeyDown}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      }}
       role="button"
       tabIndex={0}
     >

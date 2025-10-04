@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PresentationAgent from "./view_details/PresentationAgent";
 import ConstructionRAG from "./view_details/ConstructionRAG";
 import DeepPrint from "./view_details/DeepPrint";
@@ -6,6 +6,21 @@ import PredictFire from "./view_details/Predict_fire";
 
 export default function Projects({ onClose = () => {} }) {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        if (selectedProject) {
+          setSelectedProject(null);
+        } else {
+          onClose();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose, selectedProject]);
 
   const projectList = [
     {
@@ -86,7 +101,8 @@ Integrated meteorological data, population density, and agricultural land usage 
           background: "white",
           padding: "1.8rem",
           borderRadius: "12px",
-          width: "65%",
+          width: "70%",
+          maxWidth: "1000px",
           maxHeight: "80vh",
           overflowY: "auto",
           boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
@@ -107,6 +123,11 @@ Integrated meteorological data, population density, and agricultural land usage 
             background: "transparent",
             fontSize: "1.2rem",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "36px",
+            height: "36px"
           }}
         >
           ✖
@@ -211,6 +232,10 @@ Integrated meteorological data, population density, and agricultural land usage 
               color: "white",
               cursor: "pointer",
               fontSize: "1rem",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "140px"
             }}
           >
             Close

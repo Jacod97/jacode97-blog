@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function QA({ onClose = () => {} }) {
   const [openId, setOpenId] = useState(null);
@@ -30,6 +30,17 @@ The sense of accomplishment when achieving that goal together with teammates is 
     setOpenId(openId === id ? null : id);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -54,7 +65,8 @@ The sense of accomplishment when achieving that goal together with teammates is 
           background: "white",
           padding: "2rem",
           borderRadius: "12px",
-          width: "800px", // ✅ 창 크기 키움
+          width: "70%",
+          maxWidth: "900px",
           maxHeight: "85vh",
           overflowY: "auto",
           boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
@@ -110,14 +122,18 @@ The sense of accomplishment when achieving that goal together with teammates is 
           type="button"
           onClick={onClose}
           style={{
-            marginTop: "2rem",
+            margin: "2rem auto 0",
             padding: "0.8rem 1.5rem",
             border: "none",
             borderRadius: "6px",
             background: "#007bff",
             color: "white",
             cursor: "pointer",
-            fontSize: "1.05rem" // ✅ 버튼 글씨 확대
+            fontSize: "1.05rem", // ✅ 버튼 글씨 확대
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: "140px"
           }}
         >
           Close

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const timelineData = [
   {
@@ -48,6 +48,17 @@ const timelineData = [
 ];
 
 export default function Timeline({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -72,7 +83,8 @@ export default function Timeline({ onClose }) {
           background: "white",
           padding: "2rem",
           borderRadius: "12px",
-          width: "80%",
+          width: "70%",
+          maxWidth: "1000px",
           maxHeight: "80vh",
           overflowY: "auto",
           position: "relative",
@@ -91,7 +103,12 @@ export default function Timeline({ onClose }) {
             border: "none",
             background: "transparent",
             fontSize: "1.2rem",
-            cursor: "pointer"
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "36px",
+            height: "36px"
           }}
         >
           ✖
@@ -182,7 +199,11 @@ export default function Timeline({ onClose }) {
               background: "#007bff",
               color: "white",
               cursor: "pointer",
-              fontSize: "1rem"
+              fontSize: "1rem",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "140px"
             }}
           >
             Close

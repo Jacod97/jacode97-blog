@@ -1,5 +1,18 @@
 // src/components/data/Diary.js
+import { useEffect } from "react";
+
 export default function Diary({ onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
     <div
       style={{
@@ -31,13 +44,17 @@ export default function Diary({ onClose }) {
           type="button"
           onClick={onClose}
           style={{
-            marginTop: "1rem",
+            margin: "1rem auto 0",
             padding: "0.5rem 1rem",
             border: "none",
             borderRadius: "6px",
             background: "#007bff",
             color: "white",
-            cursor: "pointer"
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: "120px"
           }}
         >
           Close
