@@ -13,12 +13,12 @@ const profile = {
   name: '정재식',
   nameEn: 'Jaesik Jung',
   birth: '1997.02.16',
-  email: 'your.email@example.com',
-  phone: '010-0000-0000',
+  email: 'jacode6894@gmail.com',
+  phone: '010-5636-6894',
   links: [
-    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/yourusername' },
-    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/yourusername' },
-    { icon: FaBlog, label: 'Blog', href: 'https://yourblog.com' },
+    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/Jacod97' },
+    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/jacode6894' },
+    { icon: FaBlog, label: 'Blog', href: 'https://jacode.tistory.com/' },
   ],
 };
 
@@ -33,13 +33,13 @@ const experience = [
     period: '2025.05 – 2025.07',
     org: 'WisePlus',
     role: 'R&D팀 인턴',
-    details: ['R&D 연구 개발'],
+    details: ['수자원 시스템 연구 개발'],
   },
   {
     period: '2023.09 – 2024.10',
     org: '(주)삼보기술단',
     role: '도로사업본부',
-    details: ['도로 설계 및 사업 관리'],
+    details: ['고속도로 설계 및 사업 관리'],
   },
 ];
 

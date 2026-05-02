@@ -4,12 +4,12 @@ import styles from './RoadTimeline.module.css';
 
 /* ─── Timeline Data (6 milestones) ─── */
 const timelineData = [
-  { id: 'U1', year: '2015–2022', title: '동아대학교', desc: '토목공학과', current: false },
-  { id: 'U2', year: '2023–2024', title: '(주)삼보기술단', desc: '도로사업본부', current: false },
-  { id: 'U3', year: '2024–2025', title: 'Wanted PotenUP', desc: 'AI Agent 개발', current: false },
-  { id: 'U4', year: '2025', title: 'WisePlus', desc: 'R&D팀 인턴', current: false },
-  { id: 'U5', year: '2025–현재', title: 'SLZ Inc.', desc: 'AI BIM 팀', current: true },
-  { id: 'U6', year: '2026–현재', title: '서강대학교', desc: 'AI융합대학원', current: true },
+  { year: '2015–2022', title: '동아대학교', desc: '토목공학과', current: false },
+  { year: '2023–2024', title: '(주)삼보기술단', desc: '도로사업본부', current: false },
+  { year: '2024–2025', title: 'Wanted PotenUP', desc: 'AI Agent 개발 과정(6개월)', current: false },
+  { year: '2025', title: 'WisePlus', desc: 'R&D팀 인턴(3개월)', current: false },
+  { year: '2025–현재', title: 'SLZ Inc.', desc: 'AI BIM 팀', current: true },
+  { year: '2026–현재', title: '서강대학교', desc: 'AI융합대학원', current: true },
 ];
 
 /* ─── SVG Line Segments (viewBox 0 0 1000 400) ─── */

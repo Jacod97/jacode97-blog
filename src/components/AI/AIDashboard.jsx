@@ -77,9 +77,9 @@ const projectsData = [
 ];
 
 const contactData = {
-  email: 'your.email@example.com',
-  github: 'github.com/yourusername',
-  linkedin: 'linkedin.com/in/yourusername',
+  email: 'jacode6894@gmail.com',
+  github: 'github.com/Jacod97',
+  linkedin: 'linkedin.com/in/jacode6894',
 };
 
 const scrollToSection = (id) => {
