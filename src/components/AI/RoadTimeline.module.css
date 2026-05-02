@@ -1,0 +1,385 @@
+/* ─── Timeline Section ─── */
+.timelineSection {
+  min-height: 100vh;
+  position: relative;
+  background: #050510;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* ─── Section Label ─── */
+.sectionLabel {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #808080;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 400;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.labelLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(100, 150, 255, 0.3), transparent);
+}
+
+/* ─── Track Container ─── */
+.trackContainer {
+  position: absolute;
+  inset: 0;
+  background-color: #050510;
+  background-image: radial-gradient(rgba(100, 150, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Vignette */
+.trackContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(5, 5, 16, 0.6) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ─── SVG Line Layer ─── */
+.roadSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Node (dot + card) ─── */
+.node {
+  position: absolute;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.nodeActive {
+  pointer-events: auto;
+}
+
+/* ─── Dot ─── */
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(100, 150, 255, 0.2);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  flex-shrink: 0;
+}
+
+.nodeActive .dot {
+  background: #6496ff;
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.6);
+}
+
+/* ─── Card ─── */
+.card {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 130px;
+  max-width: 180px;
+  background: rgba(10, 10, 30, 0.9);
+  border: 1.5px solid rgba(100, 150, 255, 0.15);
+  border-radius: 6px;
+  padding: 10px 14px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.5s ease, border-color 0.5s ease;
+  white-space: nowrap;
+}
+
+.nodeActive .card {
+  opacity: 1;
+  border-color: rgba(100, 150, 255, 0.4);
+}
+
+/* Current (U5, U6) green pulse */
+.nodeCurrent.nodeActive .card {
+  border-color: rgba(0, 255, 136, 0.5);
+  animation: pulseGreenBorder 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreenBorder {
+  0%, 100% {
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 255, 136, 0.7);
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.25);
+  }
+}
+
+/* Fork top: card above dot */
+.node[data-pos="forkTop"] .card {
+  top: auto;
+  bottom: calc(100% + 12px);
+}
+
+/* Fork bottom: card below dot (default) */
+
+/* ─── Card Text ─── */
+.cardId {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: rgba(100, 150, 255, 0.4);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 2px;
+  transition: color 0.5s ease;
+}
+
+.nodeActive .cardId {
+  color: rgba(100, 150, 255, 0.8);
+}
+
+.cardYear {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(100, 150, 255, 0.3);
+  margin-bottom: 6px;
+  font-weight: 500;
+  transition: color 0.5s ease;
+}
+
+.nodeActive .cardYear {
+  color: #6496ff;
+}
+
+.cardTitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(228, 228, 231, 0.15);
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+  transition: color 0.5s ease;
+}
+
+.nodeActive .cardTitle {
+  color: #e4e4e7;
+}
+
+.cardDesc {
+  font-size: 0.65rem;
+  color: rgba(113, 113, 122, 0.15);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  transition: color 0.5s ease;
+}
+
+.nodeActive .cardDesc {
+  color: #71717a;
+}
+
+/* ─── Traveling Dot ─── */
+.travelingDot {
+  position: absolute;
+  z-index: 7;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(100, 150, 255, 0.8), 0 0 6px #fff;
+  transform: translate(-50%, -50%);
+  transition: left 0.6s ease-in-out, top 0.6s ease-in-out;
+}
+
+/* ─── Fork Dot ─── */
+.forkDot {
+  position: absolute;
+  z-index: 7;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(100, 150, 255, 0.8), 0 0 6px #fff;
+  transform: translate(-50%, -50%);
+  transition: left 0.8s ease-in-out, top 0.8s ease-in-out;
+}
+
+/* ─── Learn More Button ─── */
+.learnMoreBtn {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.6rem 1.8rem;
+  color: #6496ff;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(100, 150, 255, 0.35);
+  background: rgba(100, 150, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.learnMoreBtn:hover {
+  background: rgba(100, 150, 255, 0.1);
+  border-color: #6496ff;
+}
+
+/* ─── Mobile Timeline (hidden on desktop) ─── */
+.mobileTimeline {
+  display: none;
+}
+
+.mobileCard {
+  width: 85%;
+  max-width: 320px;
+  background: rgba(10, 10, 30, 0.9);
+  border: 1.5px solid rgba(100, 150, 255, 0.2);
+  border-radius: 6px;
+  padding: 12px 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.5s ease;
+}
+
+.mobileCardActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.mobileId {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: rgba(100, 150, 255, 0.7);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
+.mobileYear {
+  font-size: 0.65rem;
+  color: #6496ff;
+  letter-spacing: 0.15em;
+}
+
+.mobileTitle {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e4e4e7;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.mobileDesc {
+  font-size: 0.65rem;
+  color: #71717a;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* Mobile connector */
+.mobileConnector {
+  width: 2px;
+  height: 28px;
+  background: rgba(100, 150, 255, 0.15);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mobileConnectorActive {
+  opacity: 1;
+  background: rgba(100, 150, 255, 0.4);
+}
+
+/* Mobile fork group */
+.mobileForkGroup {
+  position: relative;
+  border-left: 2px solid #00ff88;
+  padding: 16px 0 8px 16px;
+  margin-top: 12px;
+  width: 85%;
+  max-width: 336px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobileForkLabel {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 0.6rem;
+  color: #00ff88;
+  letter-spacing: 0.15em;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  background: #050510;
+  padding: 0 4px;
+}
+
+.mobileForkCard {
+  width: 100%;
+  max-width: none;
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.mobileForkCard.mobileCardActive {
+  border-color: rgba(0, 255, 136, 0.5);
+  animation: pulseGreenBorder 2s ease-in-out infinite;
+}
+
+/* ─── Responsive (≤768px) ─── */
+@media (max-width: 768px) {
+  .timelineSection {
+    min-height: auto;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .sectionLabel {
+    position: relative;
+    top: 0;
+    padding: 80px 1.5rem 0;
+    margin-bottom: 24px;
+    font-size: 0.65rem;
+  }
+
+  .trackContainer {
+    display: none;
+  }
+
+  .mobileTimeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px 20px;
+  }
+}

@@ -1,0 +1,283 @@
+/* ─── Page ─── */
+.page {
+  height: 100vh;
+  overflow: hidden;
+  background: #050510;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Top Nav ─── */
+.topNav {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  background: rgba(5, 5, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(100, 150, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.backBtn {
+  color: #6496ff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.backBtn:hover {
+  color: #ffffff;
+}
+
+.pageTitle {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* ─── Scroll Area ─── */
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 150, 255, 0.2) transparent;
+}
+
+.scrollArea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollArea::-webkit-scrollbar-thumb {
+  background: rgba(100, 150, 255, 0.2);
+  border-radius: 2px;
+}
+
+/* ─── Two Column Layout ─── */
+.twoColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+  align-items: start;
+}
+
+/* ─── Column ─── */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ─── Section Header ─── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.08);
+  position: sticky;
+  top: 0;
+  background: #050510;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* ─── Card List ─── */
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ─── Dots ─── */
+.dotWork,
+.dotEdu {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotWork {
+  background: #6496ff;
+  box-shadow: 0 0 6px rgba(100, 150, 255, 0.4);
+}
+
+.dotEdu {
+  background: #00ff88;
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+}
+
+/* ─── Entry Card ─── */
+.entry {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(100, 150, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.entry:hover {
+  border-color: rgba(100, 150, 255, 0.25);
+}
+
+.entryCurrent {
+  border-color: rgba(0, 255, 136, 0.2);
+}
+
+.entryCurrent:hover {
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+/* ─── Entry Header ─── */
+.entryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.entryId {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: rgba(100, 150, 255, 0.6);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
+.entryPeriod {
+  font-size: 0.7rem;
+  color: #6496ff;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.currentBadge {
+  margin-left: auto;
+  font-size: 0.55rem;
+  color: #00ff88;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* ─── Entry Title Row ─── */
+.entryTitleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.entryOrg {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #e4e4e7;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.entryRole {
+  font-size: 0.75rem;
+  color: #71717a;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Detail Table ─── */
+.detailTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detailTable th,
+.detailTable td {
+  padding: 0.5rem 0.7rem;
+  font-size: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.06);
+}
+
+.detailTable tr:last-child th,
+.detailTable tr:last-child td {
+  border-bottom: none;
+}
+
+.detailTable th {
+  width: 90px;
+  color: #808080;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.detailTable td {
+  color: #c0c0c0;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Responsive (≤768px): stack to single column ─── */
+@media (max-width: 768px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+    padding: 1.2rem 1rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .entry {
+    padding: 1rem;
+  }
+
+  .entryTitleRow {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .entryOrg {
+    font-size: 0.95rem;
+  }
+
+  .detailTable th {
+    width: 80px;
+    font-size: 0.7rem;
+  }
+
+  .detailTable td {
+    font-size: 0.7rem;
+  }
+
+  .detailTable th,
+  .detailTable td {
+    padding: 0.4rem 0.5rem;
+  }
+}

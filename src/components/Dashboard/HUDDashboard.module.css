@@ -1,0 +1,361 @@
+.dashboard {
+  min-height: 100vh;
+  background: #0a0e27;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.gridBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: gridMove 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.centerTitle {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  z-index: 2;
+}
+
+.glitchText {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-family: 'Courier New', monospace;
+  font-weight: 900;
+  color: #00ff88;
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88,
+    0 0 40px #00ff88;
+  letter-spacing: 0.1em;
+  animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+  }
+  92% {
+    transform: translate(-2px, 2px);
+  }
+  94% {
+    transform: translate(2px, -2px);
+  }
+  96% {
+    transform: translate(-2px, -2px);
+  }
+  98% {
+    transform: translate(2px, 2px);
+  }
+}
+
+.subtitle {
+  font-family: 'Courier New', monospace;
+  color: #00d9ff;
+  font-size: 1.2rem;
+  margin-top: var(--spacing-sm);
+  letter-spacing: 0.2em;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  width: 100%;
+  z-index: 2;
+  margin-bottom: var(--spacing-xl);
+}
+
+.menuButton {
+  position: relative;
+  background: rgba(10, 14, 39, 0.8);
+  border: 2px solid;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.menuButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.menuButton:hover::before {
+  left: 100%;
+}
+
+.menuButton.active {
+  background: rgba(0, 255, 136, 0.1);
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.label {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+/* 코너 장식 */
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+}
+
+.cornerTL {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerTR {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cornerBL {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+}
+
+.cornerBR {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* 정보 패널 */
+.infoPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 14, 39, 0.95);
+  border: 2px solid #00ff88;
+  padding: var(--spacing-lg);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.panelHeader h2 {
+  font-family: 'Courier New', monospace;
+  color: #00ff88;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.closeBtn {
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background: #ff00ff;
+  color: #0a0e27;
+  transform: rotate(90deg);
+}
+
+.panelContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.dataRow {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-sm);
+  background: rgba(0, 255, 136, 0.05);
+  border-left: 2px solid #00ff88;
+  font-family: 'Courier New', monospace;
+}
+
+.dataLabel {
+  color: #00d9ff;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.dataValue {
+  color: #e4e4e7;
+}
+
+/* HUD 장식 */
+.hudDecor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cornerDecorTL,
+.cornerDecorTR,
+.cornerDecorBL,
+.cornerDecorBR {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #00ff88;
+  opacity: 0.5;
+}
+
+.cornerDecorTL {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerDecorTR {
+  top: 20px;
+  right: 20px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cornerDecorBL {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top: none;
+}
+
+.cornerDecorBR {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+/* 하단 정보 */
+.bottomInfo {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-lg);
+  font-family: 'Courier New', monospace;
+  color: #00ff88;
+  font-size: 0.9rem;
+  z-index: 2;
+}
+
+.bottomInfo span {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* 스크롤바 */
+.infoPanel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.infoPanel::-webkit-scrollbar-track {
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.infoPanel::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 4px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .menuGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .bottomInfo {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: 0.7rem;
+  }
+
+  .glitchText {
+    font-size: 2rem;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+}

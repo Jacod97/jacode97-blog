@@ -1,0 +1,273 @@
+.scanContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0e27;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.gridBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+.targetArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 600px;
+}
+
+/* 회전하는 링들 */
+.outerRing,
+.middleRing,
+.innerRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid;
+  border-radius: 50%;
+  animation: rotate 4s linear infinite;
+}
+
+.outerRing {
+  width: 400px;
+  height: 400px;
+  border-color: #00ff88;
+  opacity: 0.6;
+}
+
+.middleRing {
+  width: 300px;
+  height: 300px;
+  border-color: #00d9ff;
+  opacity: 0.7;
+  animation: rotate 3s linear infinite reverse;
+}
+
+.innerRing {
+  width: 200px;
+  height: 200px;
+  border-color: #ff00ff;
+  opacity: 0.8;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 스캔 라인 */
+.scanLine {
+  position: absolute;
+  left: -50px;
+  right: -50px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+  animation: scanPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes scanPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 인물 실루엣 */
+.silhouette {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+}
+
+.head {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #00ff88;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+.body {
+  width: 80px;
+  height: 120px;
+  border: 2px solid #00ff88;
+  margin: 0 auto;
+  position: relative;
+}
+
+.armLeft,
+.armRight {
+  width: 20px;
+  height: 100px;
+  border: 2px solid #00ff88;
+  position: absolute;
+  top: 10px;
+}
+
+.armLeft { left: -25px; }
+.armRight { right: -25px; }
+
+.legLeft,
+.legRight {
+  width: 25px;
+  height: 100px;
+  border: 2px solid #00ff88;
+  position: absolute;
+  bottom: -100px;
+}
+
+.legLeft { left: 15px; }
+.legRight { right: 15px; }
+
+/* HUD 오버레이 */
+.hudOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.progressContainer {
+  text-align: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 255, 136, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progressFill {
+  height: 100%;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+  transition: width 0.1s linear;
+}
+
+.statusText {
+  font-family: 'Courier New', monospace;
+  color: #00ff88;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ff88;
+  letter-spacing: 0.1em;
+}
+
+.percentage {
+  font-family: 'Courier New', monospace;
+  color: #00d9ff;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 0 0 20px #00d9ff;
+}
+
+/* 코너 장식 */
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #00ff88;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.cornerTL {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cornerTR {
+  top: 20px;
+  right: 20px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cornerBL {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top: none;
+}
+
+.cornerBR {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+/* 파티클 */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #00ff88;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-100vh); }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .targetArea {
+    width: 300px;
+    height: 500px;
+  }
+
+  .outerRing { width: 300px; height: 300px; }
+  .middleRing { width: 220px; height: 220px; }
+  .innerRing { width: 150px; height: 150px; }
+
+  .statusText { font-size: 1rem; }
+  .percentage { font-size: 2rem; }
+}

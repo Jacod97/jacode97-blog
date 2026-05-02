@@ -1,0 +1,37 @@
+:root {
+  /* 배경색 */
+  --bg-primary: #0a0e27;
+  --bg-secondary: #151935;
+  --bg-tertiary: #1e2442;
+
+  /* 네온 액센트 */
+  --accent-primary: #00ff88;    /* 네온 그린 */
+  --accent-secondary: #00d9ff;  /* 시안 */
+  --accent-tertiary: #ff00ff;   /* 마젠타 */
+
+  /* 텍스트 */
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  /* 글로우 효과 */
+  --glow-primary: 0 0 20px rgba(0, 255, 136, 0.5);
+  --glow-secondary: 0 0 20px rgba(0, 217, 255, 0.5);
+  --glow-tertiary: 0 0 20px rgba(255, 0, 255, 0.5);
+
+  /* 간격 */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* 레이아웃 */
+  --max-width: 1200px;
+  --header-height: 80px;
+
+  /* 전환 효과 */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}

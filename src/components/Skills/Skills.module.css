@@ -1,0 +1,129 @@
+.skills {
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 2;
+}
+
+.container {
+  max-width: var(--max-width);
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.title {
+  color: var(--accent-primary);
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  box-shadow: var(--glow-primary);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-md);
+}
+
+.category {
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+.categoryTitle {
+  color: var(--accent-secondary);
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.skillCard {
+  background: var(--bg-tertiary);
+  padding: var(--spacing-md);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.skillCard:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--glow-primary);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: var(--spacing-sm);
+}
+
+.skillName {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.levelBar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.levelFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 3px;
+  box-shadow: var(--glow-primary);
+}
+
+@media (max-width: 768px) {
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .category {
+    padding: var(--spacing-md);
+  }
+}

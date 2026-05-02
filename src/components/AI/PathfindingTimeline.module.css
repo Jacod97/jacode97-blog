@@ -1,0 +1,375 @@
+/* ─── Timeline Section ─── */
+.timelineSection {
+  min-height: 100vh;
+  position: relative;
+  background: #071210;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* ─── Section Label Overlay ─── */
+.sectionLabel {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #808080;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 400;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.labelLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+}
+
+/* ─── PCB Board ─── */
+.board {
+  position: absolute;
+  inset: 0;
+  background-color: #071210;
+  background-image: radial-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Vignette overlay */
+.board::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ─── SVG Overlay ─── */
+.traceSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── IC Chip ─── */
+.chip {
+  position: absolute;
+  display: flex;
+  align-items: stretch;
+  z-index: 2;
+  width: 24%;
+}
+
+/* Chip desktop positions (3 rows × 2 cols, snake) */
+.chipPos0 { left: 5%;  top: 8%;  }
+.chipPos1 { left: 55%; top: 8%;  }
+.chipPos2 { left: 55%; top: 36%; }
+.chipPos3 { left: 5%;  top: 36%; }
+.chipPos4 { left: 5%;  top: 64%; }
+.chipPos5 { left: 55%; top: 64%; }
+
+/* ─── Chip Label (silkscreen style) ─── */
+.chipLabel {
+  position: absolute;
+  top: -18px;
+  left: 18px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: rgba(0, 255, 136, 0.12);
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: color 0.5s ease;
+}
+
+.chipActive .chipLabel {
+  color: rgba(0, 255, 136, 0.4);
+}
+
+/* ─── Pin Leads ─── */
+.pinsLeft,
+.pinsRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 14px;
+  padding: 8px 0;
+  flex-shrink: 0;
+}
+
+.pin {
+  height: 2px;
+  background: #1a4a2a;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.chipActive .pin {
+  background: rgba(0, 255, 136, 0.45);
+  box-shadow: 0 0 4px rgba(0, 255, 136, 0.2);
+}
+
+/* ─── Chip Body ─── */
+.chipBody {
+  flex: 1;
+  background: #0a0e20;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-radius: 2px;
+  padding: 14px 16px;
+  position: relative;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
+}
+
+.chipActive .chipBody {
+  border-color: rgba(0, 255, 136, 0.6);
+  box-shadow:
+    0 0 15px rgba(0, 255, 136, 0.15),
+    0 0 30px rgba(0, 255, 136, 0.05),
+    inset 0 0 15px rgba(0, 255, 136, 0.05);
+}
+
+/* ─── Chip Notch (pin-1 indicator) ─── */
+.chipNotch {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 7px;
+  background: #071210;
+  border-radius: 0 0 7px 7px;
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-top: none;
+  transition: border-color 0.5s ease;
+}
+
+.chipActive .chipNotch {
+  border-color: rgba(0, 255, 136, 0.6);
+}
+
+/* ─── Chip LED Indicator ─── */
+.chipLed {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1a2a20;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.chipActive .chipLed {
+  background: #00ff88;
+  box-shadow: 0 0 6px #00ff88, 0 0 14px rgba(0, 255, 136, 0.4);
+}
+
+/* ─── Chip Text ─── */
+.chipYear {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(0, 255, 136, 0.25);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 500;
+  transition: color 0.5s ease;
+}
+
+.chipActive .chipYear {
+  color: #00ff88;
+}
+
+.chipTitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(228, 228, 231, 0.2);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  transition: color 0.5s ease;
+}
+
+.chipActive .chipTitle {
+  color: var(--text-primary, #e4e4e7);
+}
+
+.chipDesc {
+  font-size: 0.7rem;
+  color: rgba(113, 113, 122, 0.2);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  transition: color 0.5s ease;
+}
+
+.chipActive .chipDesc {
+  color: var(--text-muted, #71717a);
+}
+
+/* ─── Silkscreen Labels ─── */
+.silkLabel {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 0.55rem;
+  color: rgba(0, 255, 136, 0.08);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* ─── Learn More Button ─── */
+.learnMoreBtn {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.6rem 1.8rem;
+  color: #00ff88;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  background: rgba(0, 255, 136, 0.03);
+  transition: all 0.3s ease;
+}
+
+.learnMoreBtn:hover {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: #00ff88;
+}
+
+/* ─── Mobile Trace ─── */
+.mobileTrace {
+  display: none;
+  width: 2px;
+  height: 40px;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+.mobileTraceLine {
+  width: 100%;
+  height: 0;
+  background: rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.3);
+  transition: height 0.6s ease-in-out;
+  position: relative;
+}
+
+.mobileTraceActive .mobileTraceLine {
+  height: 100%;
+}
+
+.mobilePulse {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88, 0 0 16px rgba(0, 255, 136, 0.3);
+  animation: mobilePulseMove 1.5s linear infinite;
+}
+
+@keyframes mobilePulseMove {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .timelineSection {
+    min-height: auto;
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .sectionLabel {
+    position: relative;
+    top: 0;
+    padding: 80px 1.5rem 0;
+    margin-bottom: 24px;
+    font-size: 0.65rem;
+  }
+
+  .board {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 20px;
+  }
+
+  .board::after {
+    display: none;
+  }
+
+  .traceSvg {
+    display: none;
+  }
+
+  .silkLabel {
+    display: none;
+  }
+
+  .chip {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 85%;
+    max-width: 320px;
+  }
+
+  .mobileTrace {
+    display: block;
+  }
+
+  .pinsLeft,
+  .pinsRight {
+    width: 12px;
+    padding: 6px 0;
+  }
+
+  .chipBody {
+    padding: 10px 12px;
+  }
+
+  .chipYear {
+    font-size: 0.6rem;
+  }
+
+  .chipTitle {
+    font-size: 0.8rem;
+  }
+
+  .chipDesc {
+    font-size: 0.6rem;
+  }
+
+  .chipLabel {
+    top: -16px;
+    font-size: 0.55rem;
+  }
+}

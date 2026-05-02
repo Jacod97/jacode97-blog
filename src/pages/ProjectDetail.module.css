@@ -1,0 +1,404 @@
+/* ─── Page ─── */
+.page {
+  height: 100vh;
+  overflow: hidden;
+  background: #050510;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Top Nav ─── */
+.topNav {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  background: rgba(5, 5, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(100, 150, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.backBtn {
+  color: #6496ff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.backBtn:hover {
+  color: #ffffff;
+}
+
+.pageTitle {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* ─── Scroll Area ─── */
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  display: block;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 150, 255, 0.2) transparent;
+}
+
+.scrollArea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollArea::-webkit-scrollbar-thumb {
+  background: rgba(100, 150, 255, 0.2);
+  border-radius: 2px;
+}
+
+/* ─── Content ─── */
+.content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+  min-height: 0;
+}
+
+/* ─── Header ─── */
+.header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.1);
+}
+
+.projectName {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.6rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.metaDivider {
+  color: #404040;
+  font-size: 0.85rem;
+}
+
+.tagRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.categoryTag {
+  font-size: 0.65rem;
+  color: #6496ff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(100, 150, 255, 0.25);
+  padding: 2px 10px;
+  border-radius: 100px;
+}
+
+.confidentialTag {
+  font-size: 0.6rem;
+  color: #ff4d4d;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(255, 77, 77, 0.35);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* ─── Confidential Notice ─── */
+.confidentialNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 77, 77, 0.04);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  border-radius: 8px;
+}
+
+.confidentialNotice strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ff4d4d;
+  margin-bottom: 0.3rem;
+}
+
+.confidentialNotice p {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.lockIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ─── Sections ─── */
+.section {
+  margin-bottom: 2rem;
+  padding: 0;
+  min-height: 0;
+  display: block;
+}
+
+.sectionTitle {
+  font-size: 2.0rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #6496ff;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.08);
+}
+
+.overview {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.overview + .overview {
+  margin-top: 0.8rem;
+}
+
+/* ─── Architecture Image ─── */
+.archImage {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(100, 150, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.archImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Sub-section ─── */
+.subSectionTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 1.5rem 0 0.6rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+
+/* ─── Data Table ─── */
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.dataTable th,
+.dataTable td {
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  color: #d0d0d0;
+  font-weight: 300;
+}
+
+.dataTable thead th {
+  background: rgba(100, 150, 255, 0.08);
+  color: #6496ff;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+.dataTable tbody tr:hover {
+  background: rgba(100, 150, 255, 0.04);
+}
+
+/* ─── Figure Wrap ─── */
+.figureWrap {
+  width: 100%;
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+/* 공통 프레임 베이스 (보이지 않는 레이아웃 컨테이너) */
+.figureFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.figureFrame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 세로형 (ratio < 0.8) — presentation1 */
+.frameTall {
+  composes: figureFrame;
+  height: 520px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 정방형 (0.8 ≤ ratio ≤ 1.3) — presentation2, fire1, fire4 */
+.frameSquare {
+  composes: figureFrame;
+  height: 400px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 가로형 (1.3 < ratio ≤ 3) — presentation3, fire3 */
+.frameWide {
+  composes: figureFrame;
+  height: 340px;
+}
+
+/* 배너형 (ratio > 3) — deepprint1 */
+.frameBanner {
+  composes: figureFrame;
+  height: 160px;
+}
+
+.figureCaption {
+  font-size: 0.85rem;
+  color: #808080;
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+
+/* ─── Figure Row (두 이미지 나란히) ─── */
+.figureRow {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1.2rem 0;
+}
+
+.figureRow .figureWrap {
+  flex: 1;
+  margin: 0;
+}
+
+/* 나란히 — 가로형 쌍 (fire2+fire2-1) */
+.frameRowWide {
+  composes: figureFrame;
+  height: 280px;
+}
+
+/* 나란히 — 정방형 쌍 (fire5+fire6) */
+.frameRowSquare {
+  composes: figureFrame;
+  height: 320px;
+}
+
+/* ─── Demo Link ─── */
+.demoLink {
+  color: #6496ff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: text-decoration 0.2s ease;
+}
+
+.demoLink:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .projectName {
+    font-size: 1.3rem;
+  }
+
+  .metaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .metaDivider {
+    display: none;
+  }
+
+  .frameTall {
+    height: 380px;
+    max-width: 300px;
+  }
+
+  .frameSquare {
+    height: 280px;
+    max-width: 100%;
+  }
+
+  .frameWide {
+    height: 240px;
+  }
+
+  .frameBanner {
+    height: 100px;
+  }
+
+  .figureRow {
+    flex-direction: column;
+  }
+
+  .frameRowWide {
+    height: 220px;
+  }
+
+  .frameRowSquare {
+    height: 240px;
+  }
+}

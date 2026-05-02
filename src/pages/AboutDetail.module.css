@@ -1,0 +1,272 @@
+/* ─── Page ─── */
+.page {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Top Nav ─── */
+.topNav {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  background: rgba(5, 5, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(100, 150, 255, 0.1);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.backBtn {
+  color: #6496ff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.backBtn:hover {
+  color: #ffffff;
+}
+
+.pageTitle {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* ─── Content: 1단 세로 레이아웃 ─── */
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 2rem 4rem;
+}
+
+.inner {
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ─── Profile ─── */
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.nameEn {
+  font-size: 0.85rem;
+  color: #808080;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.role {
+  font-size: 0.9rem;
+  color: #6496ff;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-top: 0.3rem;
+}
+
+/* ─── Section Title ─── */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6496ff;
+  margin: 0 0 0.3rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.15);
+}
+
+/* ─── Information (세로 배치) ─── */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.infoItem,
+.infoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #b0b0b0;
+  text-decoration: none;
+  padding: 0.15rem 0;
+}
+
+.infoLink:hover {
+  color: #6496ff;
+}
+
+.infoLabel {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #6496ff;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.infoValue {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #b0b0b0;
+}
+
+.contactIcon {
+  font-size: 0.8rem;
+  color: #6496ff;
+  flex-shrink: 0;
+  width: 16px;
+}
+
+/* ─── Entry (Experience / Education) ─── */
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 2px solid rgba(100, 150, 255, 0.25);
+}
+
+.period {
+  font-size: 0.7rem;
+  color: #6496ff;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.org {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #e0e0e0;
+  letter-spacing: 0.03em;
+}
+
+.entryRole {
+  font-size: 0.78rem;
+  color: #808080;
+  font-weight: 300;
+}
+
+.detailList {
+  list-style: none;
+  padding: 0;
+  margin: 0.2rem 0 0;
+}
+
+.detailList li {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #a0a0a0;
+  line-height: 1.6;
+  padding-left: 0.8rem;
+  position: relative;
+}
+
+.detailList li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #6496ff;
+}
+
+/* ─── Skills Grid ─── */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.6rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+}
+
+.skillItem:hover {
+  background: rgba(100, 150, 255, 0.06);
+  border-color: rgba(100, 150, 255, 0.2);
+}
+
+.skillIcon {
+  font-size: 1.2rem;
+  color: #6496ff;
+}
+
+.skillName {
+  font-size: 0.55rem;
+  font-weight: 300;
+  color: #808080;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Download Button ─── */
+.downloadBtn {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  color: #6496ff;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(100, 150, 255, 0.4);
+  background: transparent;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.downloadBtn:hover {
+  background: rgba(100, 150, 255, 0.1);
+  border-color: #6496ff;
+}
+
+/* ─── 반응형 ─── */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem 1.2rem 3rem;
+  }
+
+  .skillGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
